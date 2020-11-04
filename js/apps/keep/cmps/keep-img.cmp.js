@@ -5,7 +5,7 @@ export default {
     template:`
         <form>
             <input type="text" placeholder="Enter title" v-model="info.title" />
-            <input type="file" @change="previewFiles" />
+            <input type="text" v-model="info.imgUrl" />
             <button @click=saveNote>Save!</button>
         </form>  
     `,
@@ -14,17 +14,14 @@ export default {
             info: {
                 type: "keepImg",
                 title:'',
-                imgUrl: ''
+                imgUrl: null
             }
         }
     },
     methods:{
         saveNote(){
+            console.log(this.info);
             keepService.saveNote(this.info)
         },
-        previewFiles(event) {
-            console.log(event.target.files);
-        }
-         
     }
 }

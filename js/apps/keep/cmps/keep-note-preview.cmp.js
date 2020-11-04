@@ -1,12 +1,13 @@
 export default {
     name: 'keepNotePreview',
-    props:['note'],
-    template:`
-        <section>
+    props: ['note'],
+    template: `
+        <section class="keep-note-preview">
             <h3>{{note.info.title}}</h3>
             <p v-if="note.info.text">{{note.info.text}}</p>
             <img v-if="note.info.imgUrl" :src="note.info.imgUrl" />
-            <p v-if="note.info.videoUrl">{{note.info.videoUrl}}</p>
+            <iframe v-if="note.info.videoUrl" width="100" height="100" :src="note.info.videoUrl" frameborder="0" allowfullscreen></iframe>
+            <!-- <p v-if="note.info.videoUrl">{{note.info.videoUrl}}</p> -->
             <ul v-if="note.info.todos">
                 <li v-for="todo in note.info.todos">
                     {{todo.text}}
@@ -14,17 +15,17 @@ export default {
             </ul>
         </section>  
     `,
-    data(){
+    data() {
         return {
-            info:{
+            info: {
 
             }
         }
     },
-    computed:{
+    computed: {
 
     },
-    created(){
+    created() {
 
     }
 }

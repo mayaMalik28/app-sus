@@ -5,7 +5,7 @@ import { keepService } from '../services/keep-service.js'
 
 export default {
     template:`
-    <section>
+    <section class="">
         <h1>Notes</h1>
         <keep-edit />
         <keep-note-list v-if="notes" :notes="notesToShow" />

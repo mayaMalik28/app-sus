@@ -5,8 +5,7 @@ export default {
     props:['notes'],
     template:`
         <section>
-            <h2>Your Notes</h2>
-            <ul>
+            <ul  class="keep-notes-list">
                 <li v-for="currNote in notes">
                     <keep-note-preview :note="currNote"/>
                 </li>
