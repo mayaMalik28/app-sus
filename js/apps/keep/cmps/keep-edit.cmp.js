@@ -1,47 +1,49 @@
-import keepTxt from '../cmps/keep-txt.cmp.js'
-import keepImg from '../cmps/keep-img.cmp.js'
-import keepTodo from '../cmps/keep-todo.cmp.js'
-import keepVideo from '../cmps/keep-video.cmp.js'
+import keepAddTxt from '../cmps/keep-add-txt.cmp.js'
+import keepAddImg from '../cmps/keep-add-img.cmp.js'
+import keepAddTodo from '../cmps/keep-add-todo.cmp.js'
+import keepAddVideo from '../cmps/keep-add-video.cmp.js'
 
 
 export default {
     name:'keepEdit',
     template:`
-    <section>
-        <button @click="setToImg">image note</button>
-        <button @click="setToTxt">text note</button>
-        <button @click="setToTodo">todo note</button>
-        <button @click="setToVideo">todo video</button>
+    <section class="keep-edit">
+        <div class="edit-icons">
+            <i class="fas fa-pen" @click="setToTxt"></i>
+            <i class="fas fa-list-ul" @click="setToTodo"></i>
+            <i class="fas fa-image" @click="setToImg"></i>
+            <i class="fab fa-youtube" @click="setToVideo"></i>
+        </div>
         <component :is="type"/>
     </section>
     `,
     data(){
         return{
-            type: 'keepTxt'
+            type: 'keepAddTxt'
         }
     },
     methods:{
         setToImg(){
-            this.type = 'keepImg'
+            this.type = 'keepAddImg'
         },
         setToTxt(){
-            this.type = 'keepTxt'
+            this.type = 'keepAddTxt'
         },
         setToTodo(){
-            this.type = 'keepTodo'
+            this.type = 'keepAddTodo'
         },
         setToVideo(){
-            return this.type = 'keepVideo'
+            return this.type = 'keepAddVideo'
         }
     },
     computed:{
 
     },
     components: {
-        keepTxt,
-        keepImg,
-        keepTodo,
-        keepVideo
+        keepAddTxt,
+        keepAddImg,
+        keepAddTodo,
+        keepAddVideo
     },
     created(){
         

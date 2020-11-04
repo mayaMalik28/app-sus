@@ -2,26 +2,31 @@ import {keepService} from '../services/keep-service.js'
 
 export default {
     name: 'keepImg',
-    template:`
-        <form>
-            <input type="text" placeholder="Enter title" v-model="info.title" />
-            <input type="text" v-model="info.imgUrl" />
-            <button @click=saveNote>Save!</button>
-        </form>  
+    props: ['note'],
+    template: `
+        <section class="keep-note-preview">
+            <div class="note-header flex justify-space-between align-center">
+                <h3 class="note-title">{{note.info.title}}</h3>
+                <button class="note-delete" @click="deleteNote(note.id)">X</button>
+            </div>
+            <hr/>
+            <img v-if="note.info.imgUrl" :src="note.info.imgUrl" />
+        </section>  
     `,
-    data(){
+    data() {
         return {
-            info: {
-                type: "keepImg",
-                title:'',
-                imgUrl: null
-            }
+
         }
     },
     methods:{
-        saveNote(){
-            console.log(this.info);
-            keepService.saveNote(this.info)
-        },
+        deleteNote(noteId){
+            keepService.deleteNote(noteId)
+        }
+    },
+    computed: {
+
+    },
+    created() {
+
     }
 }

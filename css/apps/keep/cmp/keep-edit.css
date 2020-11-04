@@ -1,0 +1,15 @@
+.keep-edit{
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid gray;
+    width: 400px;
+    padding: 30px;
+    border-radius: 20px;
+}
+
+.edit-icons{
+    display: flex;
+    justify-content: space-around;
+}

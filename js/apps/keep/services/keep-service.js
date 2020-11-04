@@ -2,6 +2,7 @@ import { utilService } from '../../../services/util-service.js';
 
 var gNotes = [
     {
+        id: utilService.makeId(),
         type:"keepImg",
         info:{
             title: "picture",
@@ -13,6 +14,7 @@ var gNotes = [
         }
     },
     {
+        id: utilService.makeId(),
         type:"keepTxt",
         info:{
             title: "Haiku",
@@ -26,9 +28,10 @@ var gNotes = [
         }
     },
     {
+        id: utilService.makeId(),
         type:"keepVideo",
         info:{
-            title: "picture",
+            title: "video",
             text: null,
             todos: null,
             imgUrl: null,
@@ -37,7 +40,8 @@ var gNotes = [
         }
     },
     {
-        type:"keepNotesList",
+        id: utilService.makeId(),
+        type:"keepTodo",
         info:{
             title: "todos",
             text: null,
@@ -61,11 +65,18 @@ var gNotes = [
 
 export const keepService ={
     getNotes,
-    saveNote
+    saveNote,
+    getById,
+    deleteNote
 }
 
 function getNotes(){
     return Promise.resolve(gNotes)
+}
+
+function getById(id) {
+    const note =  gNotes.find(currNote => currNote.id === id)
+    return Promise.resolve(note)
 }
 
 function saveNote(note){
@@ -82,4 +93,10 @@ function saveNote(note){
         }
     }
     gNotes.push(tempNote)
+}
+
+function deleteNote(noteId){
+    const idx = gNotes.findIndex(note => note.id === noteId);
+    gNotes.splice(idx, 1);
+    return Promise.resolve()
 }

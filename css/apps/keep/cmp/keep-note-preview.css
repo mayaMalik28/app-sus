@@ -6,6 +6,18 @@
     padding: 6px;
 }
 
+
+.note-header{
+    height: 30px;
+}
+
+.note-delete{
+    height: 20px;
+    font-weight: bold;
+    color: #888888;
+    background-color: none;
+    border: none;
+}
 .keep-note-preview img{
     max-width: 300px;
 }

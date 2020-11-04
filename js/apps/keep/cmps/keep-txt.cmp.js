@@ -2,26 +2,31 @@ import {keepService} from '../services/keep-service.js'
 
 export default {
     name: 'keepTxt',
-    template:`
-        <form>
-            <input type="text" placeholder="Enter title" v-model="info.title" />
-            <!-- <textarea  v-model="info.text">Enter text...</textarea> -->
-            <input type="text" placeholder="Enter text" v-model="info.text" />
-            <button @click=saveNote>Save!</button>
-        </form>  
+    props: ['note'],
+    template: `
+        <section class="keep-note-preview">
+            <div class="note-header flex justify-space-between align-center">
+                <h3 class="note-title">{{note.info.title}}</h3>
+                <button class="note-delete" @click="deleteNote(note.id)">X</button>
+            </div>
+            <hr/>
+            <p v-if="note.info.text">{{note.info.text}}</p>
+        </section>  
     `,
-    data(){
+    data() {
         return {
-            info:{
-                type: "keepText",
-                title: '',
-                text: '',
-            }
+
         }
     },
     methods:{
-        saveNote(){
-            keepService.saveNote(this.info)
+        deleteNote(noteId){
+            keepService.deleteNote(noteId)
         }
+    },
+    computed: {
+
+    },
+    created() {
+
     }
 }

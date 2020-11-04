@@ -1,0 +1,14 @@
+.keep-add-txt{
+    display: flex;
+    flex-direction: column;
+}
+
+/* .title-input{
+    width: 300px;
+    height: 40px;
+} */
+
+.keep-add-txt input{
+    width: 300px;
+    height: 30px;
+}

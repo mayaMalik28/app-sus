@@ -1,34 +1,32 @@
-import { keepService } from '../services/keep-service.js'
+import {keepService} from '../services/keep-service.js'
 
 export default {
     name: 'keepVideo',
+    props: ['note'],
     template: `
-        <form>
-            <input type="text" placeholder="Enter title" v-model="info.title" />
-            <input type="text" placeholder="Enter video Url" v-model="info.videoUrl" />
-            <button @click=saveNote>Save!</button>
-        </form>  
+        <section class="keep-note-preview">
+            <div class="note-header flex justify-space-between align-center">
+                <h3 class="note-title">{{note.info.title}}</h3>
+                <button class="note-delete" @click="deleteNote(note.id)">X</button>
+            </div>
+            <hr/>
+            <iframe v-if="note.info.videoUrl" width="350" height="250" :src="note.info.videoUrl" frameborder="0" allowfullscreen></iframe>
+        </section>  
     `,
     data() {
         return {
-            info: {
-                type: "keepVideo",
-                title: '',
-                videoUrl: ''
-            }
+
         }
     },
-    methods: {
-        saveNote() {
-            // var videoId = this.info.videoUrl
-            var videoId = this.info.videoUrl.split('v=')[1];
-            var ampersandPosition = videoId.indexOf('&');
-            if (ampersandPosition != -1) {
-                videoId = videoId.substring(0, ampersandPosition);
-            }
-            this.info.videoUrl = videoId
-            console.log(this.info.videoUrl);
-            keepService.saveNote(this.info)
+    methods:{
+        deleteNote(noteId){
+            keepService.deleteNote(noteId)
         }
+    },
+    computed: {
+
+    },
+    created() {
+
     }
 }

@@ -2,37 +2,35 @@ import {keepService} from '../services/keep-service.js'
 
 export default {
     name: 'keepTodo',
-    template:`
-    <section>
-        <form @submit.prevent="">
-            <input type="text" placeholder="Enter title" v-model="info.title" />
-            <input v-for="(row, idx) in rows" type="text" placeholder="Enter Task" v-model="info.todos[idx].text" />
-            <button @click=saveNote>Save!</button>
-        </form>
-        <button @click="addRow">+</button>
-    </section>  
+    props: ['note'],
+    template: `
+        <section class="keep-note-preview">
+            <div class="note-header flex justify-space-between align-center">
+                <h3 class="note-title">{{note.info.title}}</h3>
+                <button class="note-delete" @click="deleteNote(note.id)">X</button>
+            </div>
+            <hr/>
+            <ul v-if="note.info.todos">
+                <li v-for="todo in note.info.todos">
+                    {{todo.text}}
+                </li>
+            </ul>
+        </section>  
     `,
-    data(){
+    data() {
         return {
-            info:{
-                type: 'keepTodo',
-                title:'',
-                todos:[{
-                    text : ''
-                }]
-            },
-            rows: 1
+
         }
     },
     methods:{
-        addRow(){
-            this.info.todos[this.rows] = {
-                text : ''
-            }
-            this.rows++
-        },
-        saveNote(){
-            keepService.saveNote(this.info)
+        deleteNote(noteId){
+            keepService.deleteNote(noteId)
         }
+    },
+    computed: {
+
+    },
+    created() {
+
     }
 }
