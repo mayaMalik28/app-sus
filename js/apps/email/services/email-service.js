@@ -2,6 +2,7 @@ import { utilService } from '../../../services/util-service.js'
 
 export const emailService = {
     getEmails,
+    getEmailById,
 }
 
 var emails = [{
@@ -11,6 +12,7 @@ var emails = [{
         isRead: false,
         from: 'me',
         to: 'stav',
+        isStared: false,
         sentAt: 1551133930594
     },
     {
@@ -20,6 +22,7 @@ var emails = [{
         isRead: false,
         from: 'stav',
         to: 'me',
+        isStared: false,
         sentAt: 1551133930598
     },
     {
@@ -29,10 +32,16 @@ var emails = [{
         isRead: true,
         from: 'ariana',
         to: 'me',
+        isStared: false,
         sentAt: 1551133930596
     },
 ]
 
 function getEmails() {
     return Promise.resolve(emails);
+}
+
+function getEmailById(emailId) {
+    const email = emails.find(email => email.id === emailId);
+    return Promise.resolve(email);
 }

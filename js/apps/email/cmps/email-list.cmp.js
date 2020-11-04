@@ -4,11 +4,10 @@ import { emailService } from '../services/email-service.js'
 export default {
     template: `
     <section>
-        <h1>List</h1>
         <ul>
         <email-preview
         v-for= "email in emails"
-        :key="email.sentAt"
+        :key="email.id"
         :email="email"
         />
         </ul>
