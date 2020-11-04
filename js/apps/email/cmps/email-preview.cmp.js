@@ -1,7 +1,11 @@
 export default {
+    props: ['email'],
     template: `
-    <section>
-        <h1>preview</h1>
-    </section>
+    <li class="email-preview">
+    <ul class="flex">
+    <li></li>
+    </ul>
+        <pre>{{email}}</pre>
+    </li>
         `
 }

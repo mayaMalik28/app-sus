@@ -6,8 +6,6 @@ import emailStatus from '../cmps/email-status.cmp.js'
 export default {
     template: `
     <section>
-        <h1>eMail</h1>
-    
         <email-status/>
         <email-filter/>
         <email-aside/>
