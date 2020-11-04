@@ -1,10 +1,13 @@
+import {keepService} from '../services/keep-service.js'
+
 export default {
     name: 'keepTodo',
     template:`
     <section>
         <form @submit.prevent="">
+            <input type="text" placeholder="Enter title" v-model="info.title" />
             <input v-for="(row, idx) in rows" type="text" placeholder="Enter Task" v-model="info.todos[idx].text" />
-            <button @click="submit">submit</button>
+            <button @click=saveNote>Save!</button>
         </form>
         <button @click="addRow">+</button>
     </section>  
@@ -13,6 +16,7 @@ export default {
         return {
             info:{
                 type: 'keepTodo',
+                title:'',
                 todos:[{
                     text : ''
                 }]
@@ -27,8 +31,8 @@ export default {
             }
             this.rows++
         },
-        submit(){
-            console.log(this.info.todos);
+        saveNote(){
+            keepService.saveNote(this.info)
         }
     }
 }
