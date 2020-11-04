@@ -1,14 +1,14 @@
 export default {
-    name: 'keepImg',
+    name: 'keepVideo',
     template:`
         <form>
-            <input type="text" placeholder="Enter Image Url" v-model="info.url" />
+            <input type="text" placeholder="Enter video Url" v-model="info.url" />
         </form>  
     `,
     data(){
         return {
             info: {
-                type: "keepImg",
+                type: "keepVideo",
                 url: '',
             }
         }

@@ -1,4 +1,4 @@
-var notes = [
+var gNotes = [
     {
         type: "NoteText",
         isPinned: true,
@@ -27,3 +27,11 @@ var notes = [
         }
     }
 ];
+
+export const keepService ={
+    getNotes
+}
+
+function getNotes(){
+    return Promise.resolve(gNotes)
+}

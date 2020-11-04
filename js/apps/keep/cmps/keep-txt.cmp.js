@@ -1,14 +1,16 @@
 export default {
-    name: 'noteTxt',
+    name: 'keepTxt',
     template:`
         <form>
-            <input type="text" placeholder="Enter text" v-model="text" />
+            <input type="text" placeholder="Enter text" v-model="info.text" />
         </form>  
     `,
     data(){
         return {
-            type: "NoteText",
-            text: '',
+            info:{
+                type: "keepText",
+                text: '',
+            }
         }
     }
 }
