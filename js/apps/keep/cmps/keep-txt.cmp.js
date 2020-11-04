@@ -5,6 +5,7 @@ export default {
     template:`
         <form>
             <input type="text" placeholder="Enter title" v-model="info.title" />
+            <!-- <textarea  v-model="info.text">Enter text...</textarea> -->
             <input type="text" placeholder="Enter text" v-model="info.text" />
             <button @click=saveNote>Save!</button>
         </form>  

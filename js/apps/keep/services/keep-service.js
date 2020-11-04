@@ -1,3 +1,5 @@
+import { utilService } from '../../../services/util-service.js';
+
 var gNotes = [
     {
         type:"keepImg",
@@ -9,7 +11,52 @@ var gNotes = [
             videoUrl: null,
             todos: null
         }
-    }
+    },
+    {
+        type:"keepTxt",
+        info:{
+            title: "Haiku",
+            text: `old pond
+                    frog leaps in
+                    water's sound`,
+            todos: null,
+            imgUrl: null,
+            videoUrl: null,
+            todos: null
+        }
+    },
+    {
+        type:"keepVideo",
+        info:{
+            title: "picture",
+            text: null,
+            todos: null,
+            imgUrl: null,
+            videoUrl: '//www.youtube.com/embed/w-XkOtyeVXQ',
+            todos: null
+        }
+    },
+    {
+        type:"keepNotesList",
+        info:{
+            title: "todos",
+            text: null,
+            todos: null,
+            imgUrl: null,
+            videoUrl: null,
+            todos: [
+                {
+                    text:'Take the dog out'
+                },
+                {
+                    text:'Bring the dog back'
+                },
+                {
+                    text:'You forgot the dog right?'
+                },
+            ]
+        }
+    },
 ];
 
 export const keepService ={
@@ -23,6 +70,7 @@ function getNotes(){
 
 function saveNote(note){
     var tempNote = {
+        id: utilService.makeId(),
         type: note.type,
         info:{
             title: note.title,

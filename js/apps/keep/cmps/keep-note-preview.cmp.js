@@ -6,7 +6,7 @@ export default {
             <h3>{{note.info.title}}</h3>
             <p v-if="note.info.text">{{note.info.text}}</p>
             <img v-if="note.info.imgUrl" :src="note.info.imgUrl" />
-            <iframe v-if="note.info.videoUrl" width="100" height="100" :src="note.info.videoUrl" frameborder="0" allowfullscreen></iframe>
+            <iframe v-if="note.info.videoUrl" width="350" height="250" :src="note.info.videoUrl" frameborder="0" allowfullscreen></iframe>
             <!-- <p v-if="note.info.videoUrl">{{note.info.videoUrl}}</p> -->
             <ul v-if="note.info.todos">
                 <li v-for="todo in note.info.todos">
