@@ -6,11 +6,14 @@ import emailStatus from '../cmps/email-status.cmp.js'
 export default {
     template: `
     <section>
-        <email-status/>
-        <email-filter/>
-        <email-aside/>
-        <email-list/>
-        
+        <div class="flex justify-space-between">
+            <email-status/>
+            <email-filter/>
+        </div>
+        <div class="flex">
+            <email-aside/>
+            <email-list/>
+        </div>        
     </section>
         `,
     components: {

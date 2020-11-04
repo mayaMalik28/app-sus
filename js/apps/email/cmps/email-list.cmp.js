@@ -3,7 +3,7 @@ import { emailService } from '../services/email-service.js'
 
 export default {
     template: `
-    <section>
+    <section class="email-list">
         <ul>
         <email-preview
         v-for= "email in emails"

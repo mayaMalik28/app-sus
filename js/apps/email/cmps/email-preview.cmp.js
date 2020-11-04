@@ -3,7 +3,7 @@ export default {
     props: ['email'],
     template: `
     <li class="email-preview" >
-    <router-link :to="'/email/' +email.id " exact> 
+    <router-link @click.stop :to="'/email/' +email.id " exact> 
     <div class="flex justify-space-between align-center">
     <p>{{email.from}}, {{email.to}}</p>
     <div class="flex center">

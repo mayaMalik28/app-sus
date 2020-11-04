@@ -11,6 +11,11 @@
     font-size: 0.875em;
 }
 
+.email-preview a {
+    height: 100%;
+    width: 100%;
+}
+
 .email-preview p {
     margin: 0px;
     padding-left: 5px;

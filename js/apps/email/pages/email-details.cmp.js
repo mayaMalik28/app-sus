@@ -2,8 +2,9 @@ import { emailService } from '../services/email-service.js'
 
 export default {
     template: `
-    <section>
+    <section v-if="email">
         <h1>Details</h1>
+        <h1>{{email.subject}}</h1>
         <pre>{{email}}</pre>
     </section>
         `,
@@ -15,7 +16,7 @@ export default {
     created() {
         const id = this.$route.params.emailId;
         emailService.getEmailById(id)
-            .then(email => console.log(email))
+            .then(email => (this.email = email))
 
     }
 }

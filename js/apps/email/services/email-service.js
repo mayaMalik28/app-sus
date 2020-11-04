@@ -13,6 +13,7 @@ var emails = [{
         from: 'me',
         to: 'stav',
         isStared: false,
+        later: false,
         sentAt: 1551133930594
     },
     {
@@ -23,6 +24,7 @@ var emails = [{
         from: 'stav',
         to: 'me',
         isStared: false,
+        later: false,
         sentAt: 1551133930598
     },
     {
@@ -33,6 +35,7 @@ var emails = [{
         from: 'ariana',
         to: 'me',
         isStared: false,
+        later: true,
         sentAt: 1551133930596
     },
 ]

@@ -2,11 +2,24 @@ import emailCompose from './email-compose.cmp.js'
 
 export default {
     template: `
-    <section>
-        <h1>sideBar</h1>
-        <email-compose/>
+    <section class="sidebar flex-column">
+        <!-- <button @click="filterBy">Inbox</button> -->
+        <button>Inbox</button>
+        <button>Starred</button>
+        <button>Later</button>
+        <button>Sent</button>
+        <button>Drafts</button>
+        <!-- <email-compose/> -->
     </section>
         `,
+    // data() {
+    //     return {
+
+    //     },
+    // },
+    methodes: {
+
+    },
     components: {
         emailCompose
     }
