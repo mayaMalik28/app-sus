@@ -10,8 +10,8 @@ export default {
                 <button class="note-delete" @click="deleteNote(note.id)">X</button>
             </div>
             <hr/>
-            <ul v-if="note.info.todos">
-                <li v-for="todo in note.info.todos">
+            <ul class="keep-note-todos" v-if="note.info.todos">
+                <li class="keep-note-todo" v-for="todo in note.info.todos">
                     {{todo.text}}
                 </li>
             </ul>

@@ -3,9 +3,9 @@ import { keepService } from '../services/keep-service.js'
 export default {
     name: 'keepAddVideo',
     template: `
-        <form @submit.prevent="">
-            <input type="text" placeholder="Enter title" v-model="info.title" />
-            <input type="text" placeholder="Enter video Url" v-model="info.videoUrl" />
+        <form class="keep-edit-form" @submit.prevent="">
+            <input type="text" placeholder="Title" v-model="info.title" />
+            <input type="text" placeholder="Youtube Video Url" v-model="info.videoUrl" />
             <button @click.prevent=saveNote>Save!</button>
         </form>  
     `,
@@ -20,15 +20,15 @@ export default {
     },
     methods: {
         saveNote() {
-            // var videoId = this.info.videoUrl
             var videoId = this.info.videoUrl.split('v=')[1];
             var ampersandPosition = videoId.indexOf('&');
             if (ampersandPosition != -1) {
                 videoId = videoId.substring(0, ampersandPosition);
             }
             this.info.videoUrl = videoId
-            console.log(this.info.videoUrl);
             keepService.saveNote(this.info)
+            this.info.title = ''
+            this.info.videoUrl = ''
         }
     }
 }

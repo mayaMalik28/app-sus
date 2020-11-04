@@ -9,7 +9,34 @@
     border-radius: 20px;
 }
 
-.edit-icons{
+
+.keep-edit-form{
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+}
+
+.keep-edit input{
+    width: 300px;
+    height: 30px;
+    border: none;
+}
+
+.keep-edit input:focus{
+    outline: none;
+}
+
+.edit-icons{
+display: flex;
+justify-content: space-around;
+align-items: stretch;
+width: 300px;
+}
+
+.edit-icon{
+    cursor: pointer;
+    font-size: 1.3rem;
+}
+
+.edit-icon:hover{
+    color: gold;
 }

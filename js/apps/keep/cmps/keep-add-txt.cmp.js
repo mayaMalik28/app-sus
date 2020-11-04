@@ -3,10 +3,10 @@ import {keepService} from '../services/keep-service.js'
 export default {
     name: 'keepAddTxt',
     template:`
-        <form class="keep-add-txt" @submit.prevent="">
-            <input class="title-input" type="text" placeholder="Enter title" v-model="info.title" />
+        <form class="keep-edit-form" @submit.prevent="">
+            <input class="title-input" type="text" placeholder="Title" v-model="info.title" />
             <!-- <textarea  v-model="info.text">Enter text...</textarea> -->
-            <input class="content-input" type="text" placeholder="Enter text" v-model="info.text" />
+            <input class="content-input" type="text" placeholder="Text" v-model="info.text" />
             <button @click.prevent=saveNote>Save!</button>
         </form>  
     `,
@@ -22,6 +22,8 @@ export default {
     methods:{
         saveNote(){
             keepService.saveNote(this.info)
+            this.info.title = ''
+            this.info.text = ''
         }
     }
 }

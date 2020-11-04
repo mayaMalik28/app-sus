@@ -10,7 +10,7 @@ export default {
                 <button class="note-delete" @click="deleteNote(note.id)">X</button>
             </div>
             <hr/>
-            <iframe v-if="note.info.videoUrl" width="350" height="250" :src="note.info.videoUrl" frameborder="0" allowfullscreen></iframe>
+            <iframe v-if="note.info.videoUrl" width="300" height="200" :src="note.info.videoUrl" frameborder="0" allowfullscreen></iframe>
         </section>  
     `,
     data() {

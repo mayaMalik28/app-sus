@@ -8,12 +8,12 @@ export default {
     name:'keepEdit',
     template:`
     <section class="keep-edit">
-        <div class="edit-icons">
-            <i class="fas fa-pen" @click="setToTxt"></i>
-            <i class="fas fa-list-ul" @click="setToTodo"></i>
-            <i class="fas fa-image" @click="setToImg"></i>
-            <i class="fab fa-youtube" @click="setToVideo"></i>
-        </div>
+        <ul class="edit-icons">
+            <li class="edit-icon"><i class="fas fa-pen" @click="setToTxt"></i></li>
+            <li class="edit-icon"><i class="fas fa-list-ul" @click="setToTodo"></i></li>
+            <li class="edit-icon"><i class="fas fa-image" @click="setToImg"></i></li>
+            <li class="edit-icon"><i class="fab fa-youtube" @click="setToVideo"></i></li>
+        </ul>
         <component :is="type"/>
     </section>
     `,

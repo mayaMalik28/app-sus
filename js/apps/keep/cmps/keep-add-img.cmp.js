@@ -3,9 +3,9 @@ import {keepService} from '../services/keep-service.js'
 export default {
     name: 'keepAddImg',
     template:`
-        <form @submit.prevent="">
-            <input type="text" placeholder="Enter title" v-model="info.title" />
-            <input type="text" v-model="info.imgUrl" />
+        <form class="keep-edit-form" @submit.prevent="">
+            <input type="text" placeholder="Title" v-model="info.title" />
+            <input type="text" placeholder="Image Url" v-model="info.imgUrl" />
             <button @click=saveNote>Save!</button>
         </form>  
     `,
@@ -20,8 +20,9 @@ export default {
     },
     methods:{
         saveNote(){
-            console.log(this.info);
             keepService.saveNote(this.info)
+            this.info.title = ''
+            this.info.imgUrl = null
         },
     }
 }

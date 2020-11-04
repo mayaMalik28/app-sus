@@ -1,9 +1,11 @@
 .keep-note-preview {
     border-radius: 10px;
     box-shadow: 3px 4px 14px 0px #888888;
-    max-width: 400px;
+    max-width: 320px;
+    min-width: 220px;
     margin: 10px;
     padding: 6px;
+    /* padding: 10px; */
 }
 
 
@@ -18,6 +20,16 @@
     background-color: none;
     border: none;
 }
+
 .keep-note-preview img{
     max-width: 300px;
+}
+
+.keep-note-todos{
+    margin-left: 10px;
+}
+
+.keep-note-todo{
+    list-style: circle;
+    margin-left: 8px;
 }

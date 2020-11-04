@@ -4,9 +4,9 @@ export default {
     name: 'keepAddTodo',
     template:`
     <section>
-        <form @submit.prevent="">
-            <input type="text" placeholder="Enter title" v-model="info.title" />
-            <input v-for="(row, idx) in rows" type="text" placeholder="Enter Task" v-model="info.todos[idx].text" />
+        <form class="keep-edit-form" @submit.prevent="">
+            <input type="text" placeholder="Title" v-model="info.title" />
+            <input v-for="(row, idx) in rows" type="text" placeholder="Add Item" v-model="info.todos[idx].text" />
             <button @click.prevent=saveNote>Save!</button>
         </form>
         <button @click="addRow">+</button>
@@ -33,6 +33,11 @@ export default {
         },
         saveNote(){
             keepService.saveNote(this.info)
+            this.info.title = ''
+            this.row = 1
+            this.info.todos = [{
+                text: ''
+            }]
         }
     }
 }

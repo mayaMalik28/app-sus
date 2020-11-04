@@ -93,6 +93,7 @@ function saveNote(note){
         }
     }
     gNotes.push(tempNote)
+    return Promise.resolve()
 }
 
 function deleteNote(noteId){
