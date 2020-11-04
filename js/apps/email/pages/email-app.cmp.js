@@ -1,5 +1,5 @@
 import emailFilter from '../cmps/email-filter.cmp.js'
-import emailAside from '../cmps/email-aside.cmp.js'
+import emailAside from '../cmps/email-side-bar.cmp.js'
 import emailList from '../cmps/email-list.cmp.js'
 import emailStatus from '../cmps/email-status.cmp.js'
 

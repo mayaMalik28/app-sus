@@ -1,7 +1,7 @@
 import homePage from './pages/home-page.cmp.js'
-import bookMain from './apps/book/pages/book-main.cmp.js'
-import emailMain from './apps/email/pages/email-main.cmp.js'
-import keepMain from './apps/keep/pages/keep-main.cmp.js'
+import bookApp from './apps/book/pages/book-app.cmp.js'
+import emailApp from './apps/email/pages/email-app.cmp.js'
+import keepApp from './apps/keep/pages/keep-app.cmp.js'
 import aboutPage from './pages/about-page.cmp.js'
 
 const myRoutes = [{
@@ -10,19 +10,19 @@ const myRoutes = [{
     },
     {
         path: '/book',
-        component: bookMain
+        component: bookApp
     },
     {
         path: '/email',
-        component: emailMain,
+        component: emailApp,
     },
     // {
     //     path: '/email/:emailId',
-    //     component: emailMain,
+    //     component: emailApp,
     // },
     {
         path: '/keep',
-        component: keepMain
+        component: keepApp
     },
     {
         path: '/about',
