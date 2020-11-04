@@ -4,8 +4,7 @@ import emailMain from './apps/email/pages/email-main.cmp.js'
 import keepMain from './apps/keep/pages/keep-main.cmp.js'
 import aboutPage from './pages/about-page.cmp.js'
 
-const myRoutes = [
-    {
+const myRoutes = [{
         path: '/',
         component: homePage
     },
@@ -15,8 +14,12 @@ const myRoutes = [
     },
     {
         path: '/email',
-        component: emailMain
+        component: emailMain,
     },
+    // {
+    //     path: '/email/:emailId',
+    //     component: emailMain,
+    // },
     {
         path: '/keep',
         component: keepMain
