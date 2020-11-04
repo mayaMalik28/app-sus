@@ -1,0 +1,18 @@
+nav.main-nav {
+    background-color: rgb(51, 51, 51);
+    color: rgb(197, 197, 197);
+    height: 50px;
+    padding: 10px 20px;
+}
+
+nav.main-nav ul li {
+    display: inline-block;
+}
+
+nav.main-nav a {
+    margin: 7px;
+}
+
+nav.main-nav a:hover {
+    font-weight: bold;
+}
