@@ -7,6 +7,7 @@ export const emailService = {
     getEmptyEmailToSend,
     sendEmail,
     removeEmail,
+    saveEmailAsDraft
 
 }
 
@@ -76,7 +77,7 @@ function getEmptyEmailToSend() {
         from: 'me',
         to: '',
         isInbox: null,
-        isSent: true,
+        isSent: null,
         isRead: null,
         isStarred: false,
         isLater: false,
@@ -88,14 +89,25 @@ function getEmptyEmailToSend() {
 }
 
 function sendEmail(email) {
+    email.isSent = true
+    if (email.isDraft) email.isDraft = false
+    return saveEmail(email);
+}
+
+function saveEmailAsDraft(email) {
+    email.isDraft = true
     return saveEmail(email);
 }
 
 function saveEmail(email) {
     if (email.subject === '') email.subject = 'No Subject'
-    emails.push(email);
-    console.log(emails);
-    saveEmailsToLocal();
+    getEmailById(email.id)
+        .then((emailById) => {
+            if (emailById) emailById = email
+            else emails.push(email)
+        })
+        // emails.push(email);
+        // saveEmailsToLocal();
     return Promise.resolve()
 }
 

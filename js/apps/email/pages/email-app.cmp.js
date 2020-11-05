@@ -6,8 +6,8 @@ import emailStatus from '../cmps/email-status.cmp.js'
 export default {
     template: `
     <section>
-        <div class="flex justify-space-between">
-            <email-status/>
+        <div class="email-app flex justify-space-between">
+            <!-- <email-status/> -->
             <email-filter/>
         </div>
         <div class="flex">

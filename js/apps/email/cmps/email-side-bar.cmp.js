@@ -10,7 +10,7 @@ export default {
         <button @click="changeFilterBy('isStarred')">Starred</button>
         <button @click="changeFilterBy('isLater')">Later</button>
         <button @click="changeFilterBy('isSent')">Sent</button>
-        <button>Drafts</button>
+        <button @click="changeFilterBy('isDraft')">Drafts</button>
         <!-- <email-compose/> -->
         <email-compose v-if="isCompose" @closeCompose="closeCompose"/>
     </section>
@@ -23,8 +23,8 @@ export default {
     },
     methods: {
         changeFilterBy(by) {
-            this.filterBy = by;
-            eventBus.$emit(EVENT_FILTER_CATEGORY, this.filterBy)
+            this.category = by;
+            eventBus.$emit(EVENT_FILTER_CATEGORY, this.category)
         },
         openCompose() {
             this.isCompose = true

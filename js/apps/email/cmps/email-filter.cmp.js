@@ -4,8 +4,7 @@ export default {
     name: 'email-filter',
     template: `
     <section>
-        <h1>Filter</h1>
-        <button @click="toggleSort">{{sortBy}}</button>
+        <!-- <button @click="toggleSort">{{sortBy}}</button> -->
         <select 
         v-model="filterBy.isRead"
         @change="changeFilterBy()">

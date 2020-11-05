@@ -1,12 +1,13 @@
 import { emailService } from '../services/email-service.js'
 
 export default {
+    props: ['email'],
     template: `
     <section v-if="email" class="email-compose">
-        <form @submit.prevent="sendMail">
+        <form @submit.prevent>
         <div class="new-email-header flex justify-space-between">
             <h3>New Massage</h3>
-            <button @click="closeCompose">x</button>
+            <button @click.prevent.stop="closeCompose">x</button>
         </div>
         <label class="flex">
            <p>To:</p> <input type="text"  v-model="email.to" required>
@@ -23,29 +24,31 @@ export default {
         <textarea rows="10" cols="50" v-model="email.body">
         </textarea>
         <div class="compose-buttons">
-            <button>Send</button>
-            <button>Save as draft</button>
-            <button>Trash</button>
+            <button type="button" @click.stop="sendMail">Send</button>
+            <button @click.prevent.stop="saveAsDraft">Save as draft</button>
+            <button @click.prevent.stop="closeCompose">Trash</button>
         </div>
 </form>
     </section>
         `,
     data() {
-        return {
-            email: null
-        }
+        return {}
     },
     methods: {
         closeCompose() {
+            // this.email = null
             this.$emit('closeCompose');
-            // save as draft
         },
         sendMail() {
             emailService.sendEmail(this.email)
                 .then(this.closeCompose())
+        },
+        saveAsDraft() {
+            emailService.saveEmailAsDraft(this.email)
+            this.closeCompose()
         }
     },
     created() {
-        this.email = emailService.getEmptyEmailToSend();
+        if (!this.email) this.email = emailService.getEmptyEmailToSend();
     }
 }
