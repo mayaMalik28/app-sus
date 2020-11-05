@@ -42,4 +42,5 @@
 .email-compose textarea {
     border: none;
     outline: none;
+    resize: none;
 }

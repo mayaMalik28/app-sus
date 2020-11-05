@@ -3,7 +3,8 @@ import { utilService } from '../../../services/util-service.js'
 export const emailService = {
     getEmails,
     getEmailById,
-    getEmptyEmail,
+    getEmptyEmailToSend,
+    sendEmail,
 
 }
 
@@ -57,21 +58,30 @@ function getEmailById(emailId) {
     return Promise.resolve(email);
 }
 
-function getEmptyEmail() {
+function getEmptyEmailToSend() {
     return {
         id: utilService.makeId(),
         subject: '',
         body: '',
-        isRead: false,
         from: 'me',
         to: '',
+        isInbox: null,
+        isSent: false,
+        isRead: null,
         isStarred: false,
         isLater: false,
-        isInbox: false,
-        isSent: false,
         sentAt: '',
         cc: null,
         bcc: null,
         isDraft: false
     }
+}
+
+function sendEmail(email) {
+    saveEmail(email);
+}
+
+function saveEmail(email) {
+    emails.push(email);
+    console.log(emails);
 }
