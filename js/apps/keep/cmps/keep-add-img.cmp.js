@@ -2,6 +2,7 @@ import {keepService} from '../services/keep-service.js'
 
 export default {
     name: 'keepAddImg',
+    props: ['note'],
     template:`
         <form class="keep-edit-form" @submit.prevent="">
             <input type="text" placeholder="Title" v-model="info.title" />
@@ -21,8 +22,26 @@ export default {
     methods:{
         saveNote(){
             keepService.saveNote(this.info)
-            this.info.title = ''
-            this.info.imgUrl = null
+                .then(() => {
+                    this.info.title = ''
+                    this.info.imgUrl = ''
+                })
         },
+    },
+    watch: {
+        note(note) {
+            const info = {
+                type: note.type,
+                title : note.info.title,
+                imgUrl: note.info.imgUrl,
+                id : note.id,
+                isPinned : note.isPinned
+            }
+            this.info = info
+            console.log('add img', this.info);
+        }
+    },
+    created(){
+        console.log(this.note);
     }
 }

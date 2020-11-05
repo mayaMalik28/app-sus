@@ -1,28 +1,54 @@
-import {keepService} from '../services/keep-service.js'
+import { keepService } from '../services/keep-service.js'
 
 export default {
     name: 'keepAddTxt',
-    template:`
+    props: ['note'],
+    template: `
         <form class="keep-edit-form" @submit.prevent="">
-            <input class="title-input" value="hii" type="text" placeholder="Title" v-model="info.title" />
+            <input class="title-input" type="text" placeholder="Title" v-model="info.title" />
             <input class="content-input" type="text" placeholder="Text" v-model="info.text" />
             <button @click.prevent=saveNote>Save!</button>
         </form>  
     `,
-    data(){
+    data() {
         return {
-            info:{
+            info: {
                 type: "keepTxt",
                 title: '',
                 text: '',
-            }
+            },
+
         }
     },
-    methods:{
-        saveNote(){
+    methods: {
+        saveNote() {
             keepService.saveNote(this.info)
-            this.info.title = ''
-            this.info.text = ''
+                .then(() => {
+                    this.info.title = ''
+                    this.info.text = ''
+                }
+            )
         }
-    }
+    },
+    computed: {
+
+    },
+    watch: {
+        note(note) {
+            const info = {
+                type: note.type,
+                title : note.info.title,
+                text : note.info.text,
+                id : note.id,
+                isPinned : note.isPinned,
+            }
+            this.info = info
+        }
+    },
+    created() {
+        
+    },
+    destroyed(){
+        
+    } 
 }

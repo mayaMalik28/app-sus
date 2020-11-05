@@ -15,14 +15,14 @@ export default {
             <li class="edit-icon"><i class="fas fa-image" @click="setToImg"></i></li>
             <li class="edit-icon"><i class="fab fa-youtube" @click="setToVideo"></i></li>
         </ul>
-        <component v-if= "!note"   :is="type"/>
-        <component v-if= "note" :is="note.type" @note="note"/>
+        <component :is="type" :note="note"/>
+
     </section>
     `,
     data(){
         return{
             type: 'keepAddTxt',
-            note: null
+            note: null,
         }
     },
     methods:{
@@ -51,11 +51,10 @@ export default {
     created(){
         eventBus.$on('editNote', note => {
             this.note = JSON.parse(JSON.stringify(note))
-            if(this.note.type === 'keepImg') this.note.type = 'keepAddImg'
-            if(this.note.type === 'keepTxt') this.note.type = 'keepAddTxt'
-            if(this.note.type === 'keepTodo') this.note.type = 'keepAddTodo'
-            if(this.note.type === 'keepVideo') this.note.type = 'keepAddVideo'
-            console.log('it works', this.note.type);
+            if(this.note.type === 'keepImg') this.type = 'keepAddImg'
+            if(this.note.type === 'keepTxt') this.type = 'keepAddTxt'
+            if(this.note.type === 'keepTodo') this.type = 'keepAddTodo'
+            if(this.note.type === 'keepVideo') this.type = 'keepAddVideo'
         })
     }
 }
