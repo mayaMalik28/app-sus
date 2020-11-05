@@ -1,6 +1,7 @@
 import { eventBus, EVENT_FILTER_EMAIL } from '../../../services/event-bus-service.js'
 
 export default {
+    name: 'email-filter',
     template: `
     <section>
         <h1>Filter</h1>

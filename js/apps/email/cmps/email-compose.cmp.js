@@ -41,9 +41,8 @@ export default {
             // save as draft
         },
         sendMail() {
-            console.log(this.email);
-            emailService.sendEmail(this.email);
-            this.closeCompose();
+            emailService.sendEmail(this.email)
+                .then(this.closeCompose())
         }
     },
     created() {

@@ -55,5 +55,6 @@ export default {
             this.filterBy.category = category;
             console.log(this.filterBy.category);
         })
+
     }
 }
