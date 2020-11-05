@@ -3,6 +3,7 @@ nav.main-nav {
     color: rgb(197, 197, 197);
     height: 50px;
     padding: 10px 20px;
+    width: 100vw;
 }
 
 nav.main-nav ul li {

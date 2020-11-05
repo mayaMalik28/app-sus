@@ -1,8 +1,9 @@
 @import './keep-note-preview.css';
 @import './cmp/keep-notes-list.css';
 @import './cmp/keep-edit.css';
-@import './cmp/keep-add-txt.css';
 @import './cmp//keep-note-footer.css';
+@import './cmp/keep-pinned-notes-list.css';
+@import './list-header.css';
 
 .keep-app{
     display: flex;

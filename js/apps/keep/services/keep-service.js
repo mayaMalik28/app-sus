@@ -5,6 +5,7 @@ var gPinnedNotes = [
         id: utilService.makeId(),
         type:"keepImg",
         isPinned: true,
+        style:'white',
         info:{
             title: "picture",
             text: null,
@@ -21,6 +22,7 @@ var gNotes = [
         id: utilService.makeId(),
         type:"keepImg",
         isPinned: false,
+        style:'white',
         info:{
             title: "picture",
             text: null,
@@ -34,6 +36,7 @@ var gNotes = [
         id: utilService.makeId(),
         type:"keepTxt",
         isPinned: false,
+        style:'white',
         info:{
             title: "Haiku",
             text: `old pond
@@ -49,6 +52,7 @@ var gNotes = [
         id: utilService.makeId(),
         type:"keepVideo",
         isPinned: false,
+        style:'white',
         info:{
             title: "video",
             text: null,
@@ -62,6 +66,7 @@ var gNotes = [
         id: utilService.makeId(),
         type:"keepTodo",
         isPinned: false,
+        style:'white',
         info:{
             title: "todos",
             text: null,
@@ -89,7 +94,8 @@ export const keepService ={
     saveNote,
     getById,
     deleteNote,
-    pinNote
+    pinNote,
+    changeNoteColor
 }
 
 function getNotes(){
@@ -110,6 +116,7 @@ function saveNote(note){
         id: utilService.makeId(),
         type: note.type,
         isPinned: false,
+        style:'lightgoldenrodyellow',
         info:{
             title: note.title,
             text: note.text ? note.text : null,
@@ -129,20 +136,6 @@ function deleteNote(noteId){
     return Promise.resolve()
 }
 
-// function pinNote(noteId){
-//     const idx = gNotes.findIndex(note => note.id === noteId);
-//     const note = gNotes[idx]
-//     if(!note.isPinned){
-//         note.isPinned = true;
-//         gPinnedNotes.push(note);
-//         gNotes.splice(idx, 1);
-//     }else{
-//         note.isPinned = false;
-//         gNotes.push(note);
-//         gPinnedNotes.splice(idx, 1);
-//     }
-// }
-
 function pinNote(currNote){
     if(!currNote.isPinned){
         const idx = gNotes.findIndex(note => note.id === currNote.id);
@@ -154,5 +147,15 @@ function pinNote(currNote){
         currNote.isPinned = false;
         gNotes.push(currNote);
         gPinnedNotes.splice(idx, 1);
+    }
+}
+
+function changeNoteColor(bgc, currNote){
+    if(!currNote.isPinned){
+        const idx = gNotes.findIndex(note => note.id === currNote.id);
+        gNotes[idx].style = bgc;
+    }else{
+        const idx = gPinnedNotes.findIndex(note => note.id === currNote.id);
+        gPinnedNotes[idx].style = bgc;
     }
 }

@@ -5,9 +5,9 @@ const options = {
     el: '#app',
     router: myRouter,
     template: `
-        <section class="app">
+        <section class="app flex-column center">
             <app-header />
-            <main class="">
+            <main class="general-container">
                 <router-view></router-view>
             </main>
         </section>

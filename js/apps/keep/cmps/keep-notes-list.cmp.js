@@ -8,6 +8,7 @@ export default {
     props:['notes'],
     template:`
         <section>
+            <h3 class="list-header">Notes</h3>
             <ul  class="keep-notes-list">
                 <li v-for="currNote in notes">
                     <component :is="currNote.type" :note="currNote"/>

@@ -31,4 +31,9 @@
 .keep-note-todo{
     list-style: circle;
     margin-left: 8px;
+    width: 250px;
+}
+
+.keep-note-txt{
+    min-width: 300px;
 }

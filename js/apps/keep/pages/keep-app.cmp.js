@@ -43,7 +43,6 @@ export default {
                     keepService.getPinnedNotes()
                         .then(pinnedNotes =>{
                             this.pinnedNotes = pinnedNotes
-                            console.log(pinnedNotes);
                         })
                 }
                 )
