@@ -1,0 +1,14 @@
+.email-compose {
+    position: absolute;
+    bottom: 0px;
+    left: 5px;
+    border: 1px solid rgb(51, 51, 51);
+}
+
+.email-compose .new-email-header {
+    background-color: rgb(51, 51, 51);
+}
+
+.email-compose h3 {
+    margin: 0;
+}

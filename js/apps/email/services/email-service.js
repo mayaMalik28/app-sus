@@ -3,6 +3,7 @@ import { utilService } from '../../../services/util-service.js'
 export const emailService = {
     getEmails,
     getEmailById,
+    getEmptyEmail,
 
 }
 
@@ -54,4 +55,20 @@ function getEmails() {
 function getEmailById(emailId) {
     const email = emails.find(email => email.id === emailId);
     return Promise.resolve(email);
+}
+
+function getEmptyEmail() {
+    return {
+        id: utilService.makeId(),
+        subject: '',
+        body: '',
+        isRead: false,
+        from: 'me',
+        to: '',
+        isStarred: false,
+        isLater: false,
+        isInbox: false,
+        isSent: false,
+        sentAt: ''
+    }
 }
