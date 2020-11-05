@@ -8,7 +8,7 @@ export default {
         <button @click="openCompose">compose + </button>
         <button @click="changeFilterBy('isInbox')">Inbox</button>
         <button @click="changeFilterBy('isStarred')">Starred</button>
-        <button @click="changeFilterBy('isLater')">Later</button>
+        <!-- <button @click="changeFilterBy('isLater')">Later</button> -->
         <button @click="changeFilterBy('isSent')">Sent</button>
         <button @click="changeFilterBy('isDraft')">Drafts</button>
         <!-- <email-compose/> -->

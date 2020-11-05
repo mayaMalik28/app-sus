@@ -7,8 +7,9 @@ export const emailService = {
     getEmptyEmailToSend,
     sendEmail,
     removeEmail,
-    saveEmailAsDraft
-
+    saveEmailAsDraft,
+    toggleStar,
+    toggleRead,
 }
 
 const EMAILS_KEY = 'emailsDB'
@@ -20,7 +21,7 @@ var emailsData = [{
         from: 'me',
         to: 'stav',
         isStarred: true,
-        isLater: false,
+        // isLater: false,
         isInbox: false,
         isSent: true,
         createdAt: 1551133930594
@@ -33,7 +34,7 @@ var emailsData = [{
         from: 'stav',
         to: 'me',
         isStarred: false,
-        isLater: false,
+        // isLater: false,
         isInbox: true,
         isSent: false,
         createdAt: 1550133930598
@@ -46,13 +47,15 @@ var emailsData = [{
         from: 'ariana',
         to: 'me',
         isStarred: false,
-        isLater: true,
+        // isLater: true,
         isInbox: true,
         isSent: false,
         createdAt: 1551133930596
     },
 ]
 var emails;
+
+getEmails()
 
 function getEmails() {
     emails = storageService.loadFromStorage(EMAILS_KEY);
@@ -69,6 +72,24 @@ function getEmailById(emailId) {
     return Promise.resolve(email);
 }
 
+function toggleStar(emailId) {
+    getEmailById(emailId)
+        .then((email) => {
+            email.isStarred = !email.isStarred
+            saveEmailsToLocal();
+        })
+
+}
+
+function toggleRead(emailId) {
+    getEmailById(emailId)
+        .then((email) => {
+            email.isRead = !email.isRead
+            saveEmailsToLocal();
+
+        })
+}
+
 function getEmptyEmailToSend() {
     return {
         id: utilService.makeId(),
@@ -80,7 +101,7 @@ function getEmptyEmailToSend() {
         isSent: null,
         isRead: null,
         isStarred: false,
-        isLater: false,
+        // isLater: false,
         createdAt: Date.now(),
         cc: null,
         bcc: null,
@@ -105,9 +126,8 @@ function saveEmail(email) {
         .then((emailById) => {
             if (emailById) emailById = email
             else emails.push(email)
+            saveEmailsToLocal();
         })
-        // emails.push(email);
-        // saveEmailsToLocal();
     return Promise.resolve()
 }
 

@@ -6,11 +6,12 @@ export default {
     <section>
         <!-- <button @click="toggleSort">{{sortBy}}</button> -->
         <select 
+        value="all"
         v-model="filterBy.isRead"
         @change="changeFilterBy()">
-        <option>All</option>
-        <option>Read</option>
-        <option>Unread</option>
+        <option value="all" selected>All</option>
+        <option value="read">Read</option>
+        <option value="unread">Unread</option>
             read</select>
     </section>
         `,
@@ -24,8 +25,8 @@ export default {
     },
     methods: {
         changeFilterBy() {
-            if (this.filterBy.isRead === 'Read') this.filterBy.isRead = true
-            else if (this.filterBy.isRead === 'Unread') this.filterBy.isRead = false
+            if (this.filterBy.isRead === 'read') this.filterBy.isRead = true
+            else if (this.filterBy.isRead === 'unread') this.filterBy.isRead = false
             else this.filterBy.isRead = null
             console.log(this.filterBy.isRead);
             eventBus.$emit(EVENT_FILTER_EMAIL, this.filterBy);

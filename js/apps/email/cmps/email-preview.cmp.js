@@ -8,15 +8,21 @@ export default {
     template: `
     <li @click="goToDetails" class="email-preview" >
         <div class="flex justify-space-between align-center">
-                    <p>{{email.from}}, {{email.to}}</p>
+            <i :class="isStar" class="fa-star star" @click.stop="toggleStar"></i>
+                    <p v-if="email.isInbox">{{email.from}}</p>
+                    <p v-if="email.isSent">to: {{email.to}}</p>
                     <div class="flex center">
                         <p>{{email.subject}} -</p>
                         <long-text :text="email.body" :maxLength="30"/>
                     </div>
                     <p>{{date}}</p>
-            <button @click.stop="removrEmail(email.id)">Remove</button>
+                    <div>
+                        <i @click.stop="toggleRead(email.id)" :class="isRead"></i>
+                        <i @click.stop="removrEmail(email.id)" class="fas fa-trash"></i>
+                    </div>
+            <!-- <button @click.stop="removrEmail(email.id)">Remove</button> -->
         </div>
-        <email-compose @closeCompose="closeCompose" v-if="isCompose" :email="email"/>
+        <!-- <email-compose @closeCompose="closeCompose" v-if="isCompose" :email="email"/> -->
         <!-- <pre>{{email}}</pre> -->
     </li>
         `,
@@ -43,6 +49,12 @@ export default {
             console.log('close');
             this.isCompose = false
             console.log(this.isCompose);
+        },
+        toggleStar() {
+            emailService.toggleStar(this.email.id);
+        },
+        toggleRead() {
+            emailService.toggleRead(this.email.id);
         }
     },
     computed: {
@@ -51,7 +63,13 @@ export default {
                 // TODO: if its today- show hour
                 // if less then a week - __ days ago
                 // if more then week - __ weeks...
-        }
+        },
+        isStar() {
+            return { fas: this.email.isStarred, far: !this.email.isStarred }
+        },
+        isRead() {
+            return { 'read fas fa-envelope-open-text': this.email.isRead, 'fas fa-envelope': !this.email.isRead }
+        },
     },
     components: {
         longText,

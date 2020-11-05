@@ -4,7 +4,7 @@ export default {
     props: ['email'],
     template: `
     <section v-if="email" class="email-compose">
-        <form @submit.prevent>
+        <form @submit.prevent="closeCompose">
         <div class="new-email-header flex justify-space-between">
             <h3>New Massage</h3>
             <button @click.prevent.stop="closeCompose">x</button>
@@ -21,10 +21,10 @@ export default {
         <label class="flex">
             <p>Subject</p><input type="text" v-model="email.subject">
         </label>
-        <textarea rows="10" cols="50" v-model="email.body">
+        <textarea rows="10" cols="50" v-model="email.body" required>
         </textarea>
         <div class="compose-buttons">
-            <button type="button" @click.stop="sendMail">Send</button>
+            <button type="submit" @click.stop="sendMail">Send</button>
             <button @click.prevent.stop="saveAsDraft">Save as draft</button>
             <button @click.prevent.stop="closeCompose">Trash</button>
         </div>
@@ -36,12 +36,11 @@ export default {
     },
     methods: {
         closeCompose() {
-            // this.email = null
             this.$emit('closeCompose');
         },
         sendMail() {
+            console.log('send');
             emailService.sendEmail(this.email)
-                .then(this.closeCompose())
         },
         saveAsDraft() {
             emailService.saveEmailAsDraft(this.email)
