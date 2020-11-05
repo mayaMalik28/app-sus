@@ -8,6 +8,13 @@ export default {
     template:`
     <section class="keep-app">
         <h1>Notes</h1>
+        <select v-model="filterBy">
+            <option>All</option>
+            <option value="keepTxt">Text</option>
+            <option value="keepTodo">Lists</option>
+            <option value="keepImg">Images</option>
+            <option value="keepVideo">Video</option>
+        </select>
         <keep-edit />
         <keep-pinned-note-list v-if="pinnedNotes" :notes="pinnedNotesToShow"/>
         <keep-note-list v-if="notes" :notes="notesToShow" />
@@ -17,7 +24,7 @@ export default {
         return {
             notes : null,
             pinnedNotes: null,
-            filterBy: null
+            filterBy: 'All'
         }
     },
     methods:{
@@ -25,10 +32,12 @@ export default {
     },
     computed:{
         notesToShow(){
-            if (!this.filterBy) return this.notes;
+            if (this.filterBy === "All") return this.notes;
+            return this.notes.filter(note => note.type === this.filterBy)
         },
         pinnedNotesToShow(){
-            if (!this.filterBy) return this.pinnedNotes;
+            if (this.filterBy === "All") return this.pinnedNotes;
+            return this.pinnedNotes.filter(note => note.type === this.filterBy)
         }
     },
     components: {

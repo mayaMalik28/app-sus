@@ -1,6 +1,10 @@
 import { utilService } from '../../../services/util-service.js';
+import { keepStorageService } from './keep-storage-service.js'
 
-var gPinnedNotes = [
+var gNotes = null
+var gPinnedNotes = null
+
+var pinnedNotes = [
     {
         id: utilService.makeId(),
         type:"keepImg",
@@ -17,7 +21,7 @@ var gPinnedNotes = [
     },
 ]
 
-var gNotes = [
+var notes = [
     {
         id: utilService.makeId(),
         type:"keepImg",
@@ -99,10 +103,20 @@ export const keepService ={
 }
 
 function getNotes(){
+    gNotes = keepStorageService.loadNotesToLocalStorage()
+    if(!gNotes || gNotes.length < 1){
+        gNotes = notes;
+        keepStorageService.saveNotesToLocalStorage(gNotes)
+    }
     return Promise.resolve(gNotes)
 }
 
 function getPinnedNotes(){
+    gPinnedNotes = keepStorageService.loadPinnedNotesToLocalStorage()
+    if(!gPinnedNotes){
+        gPinnedNotes = pinnedNotes;
+        keepStorageService.savePinnedNotesToLocalStorage(gPinnedNotes)
+    }
     return Promise.resolve(gPinnedNotes)
 }
 
@@ -130,10 +144,18 @@ function saveNote(note){
     return Promise.resolve()
 }
 
-function deleteNote(noteId){
-    const idx = gNotes.findIndex(note => note.id === noteId);
-    gNotes.splice(idx, 1);
-    return Promise.resolve()
+function deleteNote(currNote){
+    if(!currNote.isPinned){
+        const idx = gNotes.findIndex(note => note.id === currNote.id);
+        gNotes.splice(idx, 1);
+        keepStorageService.saveNotesToLocalStorage(gNotes)
+        return Promise.resolve()
+    }else{
+        const idx = gPinnedNotes.findIndex(note => note.id === currNote.id);
+        gPinnedNotes.splice(idx, 1);
+        keepStorageService.savePinnedNotesToLocalStorage(gPinnedNotes)
+        return Promise.resolve()
+    }
 }
 
 function pinNote(currNote){
@@ -148,6 +170,8 @@ function pinNote(currNote){
         gNotes.push(currNote);
         gPinnedNotes.splice(idx, 1);
     }
+    keepStorageService.saveNotesToLocalStorage(gNotes)
+    keepStorageService.savePinnedNotesToLocalStorage(gPinnedNotes)
 }
 
 function changeNoteColor(bgc, currNote){

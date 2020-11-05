@@ -8,7 +8,7 @@ export default {
         <section class="keep-note-preview keep-note-txt" :style= '{backgroundColor: note.style }'>
             <div class="note-header flex justify-space-between align-center">
                 <h3 class="note-title">{{note.info.title}}</h3>
-                <button class="note-delete" @click="deleteNote(note.id)">X</button>
+                <button class="note-delete" @click="deleteNote(note)">X</button>
             </div>
             <hr/>
             <p>{{note.info.text}}</p>
@@ -21,8 +21,8 @@ export default {
         }
     },
     methods:{
-        deleteNote(noteId){
-            keepService.deleteNote(noteId)
+        deleteNote(note){
+            keepService.deleteNote(note)
         }
     },
     computed: {
