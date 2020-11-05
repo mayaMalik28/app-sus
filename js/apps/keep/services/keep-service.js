@@ -141,6 +141,7 @@ function saveNote(note){
         }
     }
     gNotes.push(tempNote)
+    keepStorageService.saveNotesToLocalStorage(gNotes)
     return Promise.resolve()
 }
 
@@ -178,8 +179,10 @@ function changeNoteColor(bgc, currNote){
     if(!currNote.isPinned){
         const idx = gNotes.findIndex(note => note.id === currNote.id);
         gNotes[idx].style = bgc;
+        keepStorageService.saveNotesToLocalStorage(gNotes)
     }else{
         const idx = gPinnedNotes.findIndex(note => note.id === currNote.id);
         gPinnedNotes[idx].style = bgc;
+        keepStorageService.savePinnedNotesToLocalStorage(gPinnedNotes)
     }
 }
