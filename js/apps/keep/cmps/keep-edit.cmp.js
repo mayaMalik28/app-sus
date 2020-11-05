@@ -2,6 +2,7 @@ import keepAddTxt from '../cmps/keep-add-txt.cmp.js'
 import keepAddImg from '../cmps/keep-add-img.cmp.js'
 import keepAddTodo from '../cmps/keep-add-todo.cmp.js'
 import keepAddVideo from '../cmps/keep-add-video.cmp.js'
+import { eventBus } from '../../../services/event-bus-service.js'
 
 
 export default {
@@ -14,12 +15,14 @@ export default {
             <li class="edit-icon"><i class="fas fa-image" @click="setToImg"></i></li>
             <li class="edit-icon"><i class="fab fa-youtube" @click="setToVideo"></i></li>
         </ul>
-        <component :is="type"/>
+        <component v-if= "!note"   :is="type"/>
+        <component v-if= "note" :is="note.type" @note="note"/>
     </section>
     `,
     data(){
         return{
-            type: 'keepAddTxt'
+            type: 'keepAddTxt',
+            note: null
         }
     },
     methods:{
@@ -46,6 +49,13 @@ export default {
         keepAddVideo
     },
     created(){
-        
+        eventBus.$on('editNote', note => {
+            this.note = JSON.parse(JSON.stringify(note))
+            if(this.note.type === 'keepImg') this.note.type = 'keepAddImg'
+            if(this.note.type === 'keepTxt') this.note.type = 'keepAddTxt'
+            if(this.note.type === 'keepTodo') this.note.type = 'keepAddTodo'
+            if(this.note.type === 'keepVideo') this.note.type = 'keepAddVideo'
+            console.log('it works', this.note.type);
+        })
     }
 }

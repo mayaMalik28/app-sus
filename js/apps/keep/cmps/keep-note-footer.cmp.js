@@ -1,4 +1,5 @@
 import {keepService} from '../services/keep-service.js'
+import { eventBus } from '../../../services/event-bus-service.js'
 
 export default {
     name: 'keepNoteFooter',
@@ -13,7 +14,7 @@ export default {
                 <i class="fas fa-palette"></i>
             </li>
             <li>
-                <i class="fas fa-edit"></i>
+                <i @click="editNote(note)" class="fas fa-edit"></i>
             </li>
         </ul>
         <ul v-if="showColors" class="colors">
@@ -48,6 +49,9 @@ export default {
         changeNoteColor(event, note){
             this.showColors = false
             keepService.changeNoteColor(event.target.style.backgroundColor, note)
+        },
+        editNote(note){
+            eventBus.$emit('editNote', note)
         }
     }
 }
