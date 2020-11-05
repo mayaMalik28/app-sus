@@ -3,7 +3,7 @@
 @import './helper.css';
 @import './apps/email/email-main.css';
 @import './apps/keep/keep-main.css';
-
-.general-container{
-    width: 1200px;
+.general-container {
+    width: 90%;
+    max-width: 1200px;
 }

@@ -69,6 +69,9 @@ function getEmptyEmail() {
         isLater: false,
         isInbox: false,
         isSent: false,
-        sentAt: ''
+        sentAt: '',
+        cc: null,
+        bcc: null,
+        isDraft: false
     }
 }

@@ -3,21 +3,31 @@ import { emailService } from '../services/email-service.js'
 export default {
     template: `
     <section v-if="email" class="email-compose">
-        <h3 class="new-email-header">New Massage</h3>
+        <form>
+        <div class="new-email-header flex justify-space-between">
+            <h3>New Massage</h3>
+            <button @click="closeCompose">x</button>
+        </div>
         <label class="flex">
-            to: <input type="text">
+           <p>To:</p> <input type="text">
         </label>
         <label class="flex">
-            cc: <input type="text">
+            <p>Cc:</p><input type="text">
         </label>
         <label class="flex">
-            bcc: <input type="text">
+            <p>Bcc:</p><input type="text">
         </label>
         <label class="flex">
-            Subject <input type="text">
+            <p>Subject</p><input type="text">
         </label>
-        <textarea rows="4" cols="50"></textarea>
-        <button @click="closeCompose">x</button>
+        <textarea rows="10" cols="50">
+        </textarea>
+        <div class="compose-buttons">
+            <button>Send</button>
+            <button>Save as draft</button>
+            <button>Trash</button>
+        </div>
+</form>
     </section>
         `,
     data() {
