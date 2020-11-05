@@ -1,4 +1,5 @@
 import {keepService} from '../services/keep-service.js'
+import keepNoteFooter from './keep-note-footer.cmp.js'
 
 export default {
     name: 'keepTxt',
@@ -10,7 +11,8 @@ export default {
                 <button class="note-delete" @click="deleteNote(note.id)">X</button>
             </div>
             <hr/>
-            <p v-if="note.info.text">{{note.info.text}}</p>
+            <p>{{note.info.text}}</p>
+            <keep-note-footer :id="note.id" />
         </section>  
     `,
     data() {
@@ -26,7 +28,7 @@ export default {
     computed: {
 
     },
-    created() {
-
+    components:{
+        keepNoteFooter
     }
 }

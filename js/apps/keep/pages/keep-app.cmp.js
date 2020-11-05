@@ -14,6 +14,7 @@ export default {
     data(){
         return {
             notes : null,
+            pinnedNotes: null,
             filterBy: null
         }
     },
@@ -31,10 +32,13 @@ export default {
     },
     created(){
         keepService.getNotes()
-            .then(
-                notes => {
+            .then(notes => {
                     this.notes = notes
-                    console.log(this.notes)
+                    keepService.getPinnedNotes()
+                        .then(pinnedNotes =>{
+                            this.pinnedNotes = pinnedNotes
+                            console.log(pinnedNotes);
+                        })
                 }
                 )
     }

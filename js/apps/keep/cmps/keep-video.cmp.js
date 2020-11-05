@@ -1,4 +1,5 @@
 import {keepService} from '../services/keep-service.js'
+import keepNoteFooter from './keep-note-footer.cmp.js'
 
 export default {
     name: 'keepVideo',
@@ -26,7 +27,7 @@ export default {
     computed: {
 
     },
-    created() {
-
+    components:{
+        keepNoteFooter
     }
 }
