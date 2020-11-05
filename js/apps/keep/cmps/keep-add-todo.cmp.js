@@ -1,37 +1,39 @@
-import {keepService} from '../services/keep-service.js'
+import { keepService } from '../services/keep-service.js'
 
 export default {
     name: 'keepAddTodo',
-    template:`
+    template: `
     <section>
         <form class="keep-edit-form" @submit.prevent="">
             <input type="text" placeholder="Title" v-model="info.title" />
+            <div>
             <input v-for="(row, idx) in rows" type="text" placeholder="Add Item" v-model="info.todos[idx].text" />
+            <button @click="addRow">+</button>
+            </div>
             <button @click.prevent=saveNote>Save!</button>
         </form>
-        <button @click="addRow">+</button>
     </section>  
     `,
-    data(){
+    data() {
         return {
-            info:{
+            info: {
                 type: 'keepTodo',
-                title:'',
-                todos:[{
-                    text : ''
+                title: '',
+                todos: [{
+                    text: ''
                 }]
             },
             rows: 1
         }
     },
-    methods:{
-        addRow(){
+    methods: {
+        addRow() {
             this.info.todos[this.rows] = {
-                text : ''
+                text: ''
             }
             this.rows++
         },
-        saveNote(){
+        saveNote() {
             keepService.saveNote(this.info)
             this.info.title = ''
             this.row = 1
