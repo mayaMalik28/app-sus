@@ -8,9 +8,9 @@ export default {
         <select 
         v-model="filterBy.isRead"
         @change="changeFilterBy()">
-        <option value="null">All</option>
-        <option value="true">Read</option>
-        <option value="false">Unread</option>
+        <option>All</option>
+        <option>Read</option>
+        <option>Unread</option>
             read</select>
     </section>
         `,
@@ -24,17 +24,21 @@ export default {
     },
     methods: {
         changeFilterBy() {
+            if (this.filterBy.isRead === 'Read') this.filterBy.isRead = true
+            else if (this.filterBy.isRead === 'Unread') this.filterBy.isRead = false
+            else this.filterBy.isRead = null
+            console.log(this.filterBy.isRead);
             eventBus.$emit(EVENT_FILTER_EMAIL, this.filterBy);
         },
         toggleSort() {
             this.filterBy.isSortByDate = !this.filterBy.isSortByDate;
-            eventBus.$emit(EVENT_FILTER_EMAIL, this.filterBy);
+            eventBus.$emit(EVENT_FILTER_EMAIL, JSON.parse(JSON.stringify(this.filterBy)));
         }
     },
     computed: {
         sortBy() {
-            if (this.filterBy.isSortByDate) return 'sort by date'
-            return 'sort by text'
+            if (this.filterBy.isSortByDate) return 'sort by text'
+            return 'sort by date'
         }
 
     }

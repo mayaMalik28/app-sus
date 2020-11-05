@@ -32,10 +32,12 @@ export default {
         emailsToShow() {
             // return this.emails
             if (!this.filterBy) return this.emails
-            return this.emails.filter(email => (email[this.filterBy.category])
-                // &&
-                // (this.email.isRead !== !this.email.isRead)
-            )
+            return this.emails.filter(email => (email[this.filterBy.category]) &&
+                    ((!email.isRead) != this.filterBy.isRead)
+                )
+                // .sort(utilService.sortByProperty('subject'), true)
+                // if (this.filterBy.isSortByDate) this.emails.sort(utilService.sortByProperty('sentAt'), true)
+                // else this.emails.sort(utilService.sortByProperty('subject'))
         }
     },
     components: {
@@ -46,10 +48,8 @@ export default {
             .then(emails => this.emails = emails);
 
         eventBus.$on(EVENT_FILTER_EMAIL, (filterBy) => {
-            console.log(filterBy);
             this.filterBy.isSortByDate = filterBy.isSortByDate;
             this.filterBy.isRead = filterBy.isRead;
-            console.log(this.filterBy);
         })
         eventBus.$on(EVENT_FILTER_CATEGORY, (category) => {
             this.filterBy.category = category;
