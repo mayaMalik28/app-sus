@@ -22,14 +22,13 @@ export default {
                     </div>
             <!-- <button @click.stop="removrEmail(email.id)">Remove</button> -->
         </div>
-        <!-- <email-compose @closeCompose="closeCompose" v-if="isCompose" :email="email"/> -->
+        <email-compose @closeCompose="closeCompose" v-if="isCompose" :email="email"/>
         <!-- <pre>{{email}}</pre> -->
     </li>
         `,
     data() {
         return {
             isCompose: false,
-            cuurEmail: null
         }
     },
     methods: {
@@ -75,7 +74,5 @@ export default {
         longText,
         emailCompose,
     },
-    created() {
-        this.cuurEmail = this.email
-    }
+    created() {}
 }

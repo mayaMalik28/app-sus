@@ -53,7 +53,7 @@ export default {
         })
         eventBus.$on(EVENT_FILTER_CATEGORY, (category) => {
             this.filterBy.category = category;
-            console.log(this.filterBy.category);
+            // console.log(this.filterBy.category);
         })
 
     }

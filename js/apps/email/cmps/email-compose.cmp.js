@@ -25,7 +25,7 @@ export default {
         </textarea>
         <div class="compose-buttons">
             <button type="submit" @click.stop="sendMail">Send</button>
-            <button @click.prevent.stop="saveAsDraft">Save as draft</button>
+            <button type="submit" @click.stop="saveAsDraft">Save as draft</button>
             <button @click.prevent.stop="closeCompose">Trash</button>
         </div>
 </form>
@@ -44,7 +44,7 @@ export default {
         },
         saveAsDraft() {
             emailService.saveEmailAsDraft(this.email)
-            this.closeCompose()
+                // this.closeCompose()
         }
     },
     created() {

@@ -1,0 +1,29 @@
+.email-reply {
+    /* background: #000; */
+    border-radius: 10px;
+    border: 1px solid black
+}
+
+.email-reply input {
+    border: none;
+    outline: none;
+    padding: 5px;
+    width: 100%;
+    height: 100%;
+}
+
+.email-reply p {
+    margin: 0;
+    padding-top: 5px;
+    font-size: 0.75em;
+}
+
+.email-reply label {
+    padding: 5px 5px;
+}
+
+.email-reply textarea {
+    border: none;
+    outline: none;
+    resize: none;
+}
