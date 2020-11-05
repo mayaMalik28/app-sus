@@ -12,6 +12,7 @@ export default {
             </div>
             <hr/>
             <iframe v-if="note.info.videoUrl" width="300" height="200" :src="note.info.videoUrl" frameborder="0" allowfullscreen></iframe>
+            <keep-note-footer :note="note" />
         </section>  
     `,
     data() {

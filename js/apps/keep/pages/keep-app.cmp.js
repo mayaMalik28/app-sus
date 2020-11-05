@@ -1,5 +1,6 @@
 import keepEdit from '../cmps/keep-edit.cmp.js'
 import keepNoteList from '../cmps/keep-notes-list.cmp.js'
+import keepPinnedNoteList from '../cmps/keep-pinned-notes-list.cmp.js'
 import { keepService } from '../services/keep-service.js'
 
 
@@ -8,6 +9,7 @@ export default {
     <section class="keep-app">
         <h1>Notes</h1>
         <keep-edit />
+        <keep-pinned-note-list v-if="pinnedNotes" :notes="pinnedNotesToShow"/>
         <keep-note-list v-if="notes" :notes="notesToShow" />
     </section>
     `,
@@ -24,11 +26,15 @@ export default {
     computed:{
         notesToShow(){
             if (!this.filterBy) return this.notes;
+        },
+        pinnedNotesToShow(){
+            if (!this.filterBy) return this.pinnedNotes;
         }
     },
     components: {
         keepEdit,
-        keepNoteList
+        keepNoteList,
+        keepPinnedNoteList
     },
     created(){
         keepService.getNotes()

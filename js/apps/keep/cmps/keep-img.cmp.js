@@ -12,6 +12,7 @@ export default {
             </div>
             <hr/>
             <img v-if="note.info.imgUrl" :src="note.info.imgUrl" />
+            <keep-note-footer :note="note" />
         </section>  
     `,
     data() {

@@ -16,6 +16,7 @@ export default {
                     {{todo.text}}
                 </li>
             </ul>
+            <keep-note-footer :note="note" />
         </section>  
     `,
     data() {

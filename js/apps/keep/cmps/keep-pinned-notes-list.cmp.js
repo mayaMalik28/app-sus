@@ -4,7 +4,7 @@ import keepImg from './keep-img.cmp.js'
 import keepVideo from './keep-video.cmp.js'
 
 export default {
-    name: 'keepNotesList',
+    name: 'keepPinnedNotesList',
     props:['notes'],
     template:`
         <section>

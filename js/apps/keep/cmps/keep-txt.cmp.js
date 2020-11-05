@@ -12,7 +12,7 @@ export default {
             </div>
             <hr/>
             <p>{{note.info.text}}</p>
-            <keep-note-footer :id="note.id" />
+            <keep-note-footer :note="note" />
         </section>  
     `,
     data() {
