@@ -12,8 +12,8 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    width: 170px;
-    
+    width: 179px;
+    transform: translateX(58px);
 }
 
 .color{

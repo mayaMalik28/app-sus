@@ -3,6 +3,11 @@
 @import './helper.css';
 @import './apps/email/email-main.css';
 @import './apps/keep/keep-main.css';
+
+body{
+    scroll-behavior: smooth;
+}
+
 .general-container {
     width: 90%;
     max-width: 1200px;

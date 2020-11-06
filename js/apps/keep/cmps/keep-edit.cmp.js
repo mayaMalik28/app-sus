@@ -8,7 +8,7 @@ import { eventBus } from '../../../services/event-bus-service.js'
 export default {
     name:'keepEdit',
     template:`
-    <section class="keep-edit">
+    <section class="keep-edit" id="keep-editor">
         <ul class="edit-icons">
             <li class="edit-icon"><i class="fas fa-pen" @click="setToTxt"></i></li>
             <li class="edit-icon"><i class="fas fa-list-ul" @click="setToTodo"></i></li>

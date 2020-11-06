@@ -26,7 +26,7 @@ var pinnedNotes = [
         style: 'rgb(255 204 212)',
         info: {
             title: "Sarcasm",
-            text: "it's like punching people in the face, but with words",
+            text: "It's like punching people in the face, but with words",
             todos: null,
             imgUrl: null,
             videoUrl: null,
@@ -153,7 +153,7 @@ var notes = [
         style: 'rgb(171 255 153)',
         info: {
             title: "Haiku",
-            text: `old pond
+            text: `Old pond
                     frog leaps in
                     water's sound`,
             todos: null,

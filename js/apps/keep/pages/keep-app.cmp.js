@@ -8,7 +8,6 @@ export default {
     name:'keepApp',
     template:`
     <section class="keep-app">
-        <h1>Notes</h1>
         <select v-model="filterBy">
             <option>All</option>
             <option value="keepTxt">Text</option>

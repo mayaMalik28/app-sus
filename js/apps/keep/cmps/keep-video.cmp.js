@@ -8,7 +8,8 @@ export default {
         <section class="keep-note-preview" :style= '{backgroundColor: note.style }'>
             <div class="note-header flex justify-space-between align-center">
                 <h3 class="note-title">{{note.info.title}}</h3>
-                <button class="note-delete" @click="deleteNote(note)">X</button>
+                <i class="fas fa-thumbtack" @click="pinNote(note)"></i>
+                <!-- <button class="note-delete" @click="deleteNote(note)">X</button> -->
             </div>
             <hr/>
             <iframe v-if="note.info.videoUrl" width="300" height="200" :src="note.info.videoUrl" frameborder="0" allowfullscreen></iframe>
@@ -21,9 +22,9 @@ export default {
         }
     },
     methods:{
-        deleteNote(note){
-            keepService.deleteNote(note)
-        }
+        pinNote(note){
+            keepService.pinNote(note)
+        },
     },
     computed: {
 

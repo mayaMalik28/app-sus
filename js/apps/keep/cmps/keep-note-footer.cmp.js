@@ -8,7 +8,7 @@ export default {
     <section >
         <ul class="keep-note-footer" >
             <li>
-                <i class="fas fa-thumbtack" @click="pinNote(note)"></i>
+                <i class="fas fa-trash" @click="deleteNote(note)"></i>
             </li>
             <li @click="showColors= !showColors">
                 <i class="fas fa-palette"></i>
@@ -43,14 +43,15 @@ export default {
         }
     },
     methods:{
-        pinNote(note){
-            keepService.pinNote(note)
+        deleteNote(note){
+            keepService.deleteNote(note)
         },
         changeNoteColor(event, note){
             this.showColors = false
             keepService.changeNoteColor(event.target.style.backgroundColor, note)
         },
         editNote(note){
+            document.getElementById("keep-editor").scrollIntoView();
             eventBus.$emit('editNote', note)
         }
     }
