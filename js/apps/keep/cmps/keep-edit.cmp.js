@@ -16,8 +16,6 @@ export default {
             <li class="edit-icon"><i class="fab fa-youtube" @click="setToVideo"></i></li>
         </ul>
         <component :is="type" :note="note"/>
-        <!-- <component v-if="!note" :is="type"/>
-        <component v-else :is="type" :note="note"/> -->
 
     </section>
     `,
@@ -59,7 +57,6 @@ export default {
     },
     created(){
         eventBus.$on('editNote', note => {
-            console.log(this.note);
             if(note.type === 'keepImg') this.type = 'keepAddImg'
             else if(note.type === 'keepTxt') this.type = 'keepAddTxt'
             else if(note.type === 'keepTodo') this.type = 'keepAddTodo'
