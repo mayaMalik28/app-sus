@@ -24,6 +24,7 @@ export default {
     methods: {
         changeFilterBy(by) {
             this.category = by;
+            emailService.setCurrCategory(by);
             eventBus.$emit(EVENT_FILTER_CATEGORY, this.category)
         },
         openCompose() {

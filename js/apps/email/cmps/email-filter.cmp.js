@@ -5,6 +5,8 @@ export default {
     template: `
     <section>
         <!-- <button @click="toggleSort">{{sortBy}}</button> -->
+        <button @click="sortByText">Sort By Text</button>
+        <button @click="sortByDate">Sort By Date</button>
         <select 
         value="all"
         v-model="filterBy.isRead"
@@ -18,7 +20,7 @@ export default {
     data() {
         return {
             filterBy: {
-                isSortByDate: true,
+                isSortByText: true,
                 isRead: null,
             },
         }
@@ -31,8 +33,16 @@ export default {
             console.log(this.filterBy.isRead);
             eventBus.$emit(EVENT_FILTER_EMAIL, this.filterBy);
         },
-        toggleSort() {
-            this.filterBy.isSortByDate = !this.filterBy.isSortByDate;
+        // toggleSort() {
+        //     this.filterBy.isSortByText = !this.filterBy.isSortByText;
+        //     eventBus.$emit(EVENT_FILTER_EMAIL, JSON.parse(JSON.stringify(this.filterBy)));
+        // },
+        sortByDate() {
+            this.filterBy.isSortByText = false;
+            eventBus.$emit(EVENT_FILTER_EMAIL, JSON.parse(JSON.stringify(this.filterBy)));
+        },
+        sortByText() {
+            this.filterBy.isSortByText = true;
             eventBus.$emit(EVENT_FILTER_EMAIL, JSON.parse(JSON.stringify(this.filterBy)));
         }
     },

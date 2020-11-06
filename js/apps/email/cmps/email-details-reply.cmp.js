@@ -1,14 +1,14 @@
 import { emailService } from '../services/email-service.js'
-import emailReply from '../cmps/email-reply.cmp.js'
-import emailDetailsReply from '../cmps/email-details-reply.cmp.js'
+import emailReply from './email-reply.cmp.js'
 
 
 export default {
     name: 'emailDetails',
+    props: ['id'],
     template: `
     <section v-if="email">
     <!-- <email-details v-if="email.repliedId"></email-details> -->
-    <email-details-reaplied v-if="email.repliedId" :id="email.id"/>
+    <!-- <details-reaplied v-if="email.repliedId"/> -->
         <h3>{{email.subject}}</h3>
         <p v-if="email.isInbox">from: {{email.from}}</p>
         <p v-if="email.isSent">to: {{email.to}}</p>
@@ -48,13 +48,12 @@ export default {
         // }
     },
     created() {
-        const id = this.$route.params.emailId;
-        emailService.getEmailById(id)
+        // const id = this.$route.params.emailId;
+        emailService.getEmailById(this.id)
             .then(email => (this.email = email))
 
     },
     components: {
-        emailReply,
-        emailDetailsReply
+        emailReply
     }
 }

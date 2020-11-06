@@ -1,7 +1,19 @@
+import { emailService } from '../services/email-service.js'
+
 export default {
     template: `
-    <section>
-        <h1>Status</h1>
+    <section v-if="countEmails">
+        <p>you read {{countRead}} out of {{countEmails}} emails</p>
     </section>
-        `
+        `,
+    data() {
+        return {
+            countRead: null,
+            countEmails: null
+        }
+    },
+    created() {
+        this.countEmails = emailService.countEmails()
+        this.countRead = emailService.countReadEmails()
+    }
 }

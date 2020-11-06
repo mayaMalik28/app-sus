@@ -4,13 +4,13 @@ import { emailService } from '../services/email-service.js'
 
 export default {
     name: 'enail-preview',
-    props: ['email'],
+    props: ['email', 'category'],
     template: `
     <li @click="goToDetails" class="email-preview" >
         <div class="flex justify-space-between align-center">
             <i :class="isStar" class="fa-star star" @click.stop="toggleStar"></i>
-                    <p v-if="email.isInbox">{{email.from}}</p>
-                    <p v-if="email.isSent">to: {{email.to}}</p>
+                    <p v-if="category === 'isInbox'">{{email.from}}</p>
+                    <p v-if="category === 'isSent'">to: {{email.to}}</p>
                     <div class="flex center">
                         <p>{{email.subject}} -</p>
                         <long-text :text="email.body" :maxLength="30"/>

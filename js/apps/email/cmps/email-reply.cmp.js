@@ -13,7 +13,7 @@ export default {
         <div class="compose-buttons">
             <button type="submit" @click.stop="sendMail">Send</button>
             <button type="submit" @click.stop="saveAsDraft">Save as draft</button>
-            <button @click.prevent.stop="closeCompose">Trash</button>
+            <button @click.prevent.stop="closeReply">Trash</button>
         </div>
 </form>
     </section>
@@ -25,6 +25,7 @@ export default {
     },
     methods: {
         closeReply() {
+            // לעשות שזה ייסגר בלי לצאת לגמרי
             this.$router.push(`/email`);
         },
         sendMail() {
@@ -43,6 +44,7 @@ export default {
         console.log(this.emailToAnswer);
         this.email.to = this.emailToAnswer.from;
         this.email.subject = 'Re: ' + this.emailToAnswer.subject;
+        this.email.repliedId = this.emailToAnswer.id;
 
     }
 }

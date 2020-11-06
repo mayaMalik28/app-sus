@@ -6,12 +6,13 @@ import { eventBus, EVENT_FILTER_CATEGORY, EVENT_FILTER_EMAIL } from '../../../se
 
 export default {
     template: `
-    <section v-if="emails" class="email-list">
+    <section :ref="filterBy.category"  v-if="emails" class="email-list">
         <ul>
         <email-preview
         v-for= "email in emailsToShow"
         :key="email.id"
         :email="email"
+        :category="filterBy.category"
         />
         </ul>
     </section>
@@ -22,7 +23,7 @@ export default {
             emails: null,
             filterBy: {
                 category: 'isInbox',
-                isSortByDate: 'true',
+                isSortByText: false,
                 isRead: null,
 
             }
@@ -30,14 +31,14 @@ export default {
     },
     computed: {
         emailsToShow() {
-            // return this.emails
-            if (!this.filterBy) return this.emails
-            return this.emails.filter(email => (email[this.filterBy.category]) &&
-                    ((!email.isRead) != this.filterBy.isRead)
-                )
-                // .sort(utilService.sortByProperty('subject'), true)
-                // if (this.filterBy.isSortByDate) this.emails.sort(utilService.sortByProperty('sentAt'), true)
-                // else this.emails.sort(utilService.sortByProperty('subject'))
+            if (!this.filterBy) var emails = this.emails
+            var emails = this.emails.filter(email => (email[this.filterBy.category]) &&
+                ((!email.isRead) != this.filterBy.isRead)
+            );
+            if (this.filterBy.isSortByText) emails.sort((a, b) => (a.text > b.text) ? 1 : -1)
+            else emails.sort((a, b) => (a.createdAt > b.createdAt) ? 1 : (a.createdAt < b.createdAt) ? -1 : 0)
+                // maybe move to service
+            return emails
         }
     },
     components: {
@@ -47,9 +48,16 @@ export default {
         emailService.getEmails()
             .then(emails => this.emails = emails);
 
+        emailService.getCurrCategory()
+            .then((category) => this.filterBy.category = category)
+
+        // should it be with promiss?
+
+
         eventBus.$on(EVENT_FILTER_EMAIL, (filterBy) => {
-            this.filterBy.isSortByDate = filterBy.isSortByDate;
+            this.filterBy.isSortByText = filterBy.isSortByText;
             this.filterBy.isRead = filterBy.isRead;
+            console.log('isSortByText', this.filterBy.isSortByText);
         })
         eventBus.$on(EVENT_FILTER_CATEGORY, (category) => {
             this.filterBy.category = category;

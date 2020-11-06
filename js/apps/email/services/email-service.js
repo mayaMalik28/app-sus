@@ -10,6 +10,10 @@ export const emailService = {
     saveEmailAsDraft,
     toggleStar,
     toggleRead,
+    countReadEmails,
+    countEmails,
+    setCurrCategory,
+    getCurrCategory
 }
 
 const EMAILS_KEY = 'emailsDB'
@@ -24,7 +28,8 @@ var emailsData = [{
         // isLater: false,
         isInbox: false,
         isSent: true,
-        createdAt: 1551133930594
+        createdAt: 1551133930594,
+        repliedId: null
     },
     {
         id: utilService.makeId(),
@@ -37,7 +42,9 @@ var emailsData = [{
         // isLater: false,
         isInbox: true,
         isSent: false,
-        createdAt: 1550133930598
+        createdAt: 1550133930598,
+        repliedId: null
+
     },
     {
         id: utilService.makeId(),
@@ -50,10 +57,13 @@ var emailsData = [{
         // isLater: true,
         isInbox: true,
         isSent: false,
-        createdAt: 1551133930596
+        createdAt: 1551133930596,
+        repliedId: null
+
     },
 ]
 var emails;
+var currCategory = 'isInbox';
 
 getEmails()
 
@@ -99,18 +109,23 @@ function getEmptyEmailToSend() {
         to: '',
         isInbox: null,
         isSent: null,
-        isRead: null,
+        isRead: true,
         isStarred: false,
         // isLater: false,
         createdAt: Date.now(),
         cc: null,
         bcc: null,
-        isDraft: false
+        isDraft: false,
+        repliedId: null
     }
 }
 
 function sendEmail(email) {
-    email.isSent = true
+    email.isSent = true;
+    if (email.to === 'me') {
+        email.isInbox = true;
+        email.isRead = false
+    }
     if (email.isDraft) email.isDraft = false
     return saveEmail(email);
 }
@@ -142,4 +157,24 @@ function removeEmail(emailId) {
 
 function saveEmailsToLocal() {
     storageService.saveToStorage(EMAILS_KEY, emails);
+}
+
+function countReadEmails() {
+    var count = 0
+    emails.forEach(email => {
+        if (email.isRead) count++
+    })
+    return count;
+}
+
+function countEmails() {
+    return emails.length;
+}
+
+function setCurrCategory(category) {
+    currCategory = category;
+}
+
+function getCurrCategory() {
+    return Promise.resolve(currCategory);
 }
