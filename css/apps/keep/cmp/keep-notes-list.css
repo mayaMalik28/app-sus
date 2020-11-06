@@ -1,9 +1,16 @@
 .keep-notes-list {
-    /* display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center; */
     column-count: 3;
-    /* column-width: 300px; */
     column-gap: 20px;
+}
+
+@media (max-width: 1000px){
+    .keep-notes-list {
+        column-count: 2;
+    }
+}
+
+@media (max-width: 690px){
+    .keep-notes-list {
+        column-count: 1;
+    }
 }

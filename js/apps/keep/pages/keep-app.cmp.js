@@ -8,14 +8,14 @@ export default {
     name:'keepApp',
     template:`
     <section class="keep-app">
-        <select v-model="filterBy">
-            <option>All</option>
-            <option value="keepTxt">Text</option>
-            <option value="keepTodo">Lists</option>
-            <option value="keepImg">Images</option>
-            <option value="keepVideo">Video</option>
-        </select>
         <keep-edit />
+            <select class="keep-filter" v-model="filterBy">
+                <option>All</option>
+                <option value="keepTxt">Text</option>
+                <option value="keepTodo">Lists</option>
+                <option value="keepImg">Images</option>
+                <option value="keepVideo">Video</option>
+            </select>
         <keep-pinned-note-list v-if="pinnedNotes" :notes="pinnedNotesToShow"/>
         <keep-note-list v-if="notes" :notes="notesToShow" />
     </section>

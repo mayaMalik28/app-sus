@@ -2,12 +2,12 @@ import { keepService } from '../services/keep-service.js'
 
 export default {
     name: 'keepAddVideo',
-    props:['note'],
+    props: ['note'],
     template: `
         <form class="keep-edit-form" @submit.prevent="">
             <input type="text" placeholder="Title" v-model="info.title" />
             <input type="text" placeholder="Youtube Video Url" v-model="info.videoUrl" />
-            <button @click.prevent=saveNote>Save!</button>
+            <button class="save-btn" @click.prevent=saveNote>Save!</button>
         </form>  
     `,
     data() {
@@ -29,22 +29,33 @@ export default {
             this.info.videoUrl = videoId
             keepService.saveNote(this.info)
                 .then(() => {
-                    this.info.title = ''
-                    this.info.videoUrl = ''
+                    this.info = {
+                        type: "keepVideo",
+                        title: '',
+                        videoUrl: ''
+                    }
                 })
-        }
-    },
-    watch: {
-        note(note) {
+        },
+        setInfo() {
             const info = {
                 type: note.type,
-                title : note.info.title,
+                title: note.info.title,
                 videoUrl: note.info.videoUrl,
-                id : note.id,
-                isPinned : note.isPinned,
+                id: note.id,
+                isPinned: note.isPinned,
                 style: note.style
             }
             this.info = info
         }
     },
+    watch: {
+        note(note) {
+            setInfo(note)
+        }
+    },
+    created() {
+        if (this.note) {
+            this.setInfo(this.note)
+        }
+    }
 }

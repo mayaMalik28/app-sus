@@ -11,7 +11,7 @@ export default {
                 <input v-for="(todo, idx) in info.todos" type="text" placeholder="Add Item" v-model="todo.text" />
                 <button @click="addRow">+</button>
             </div>
-            <button @click.prevent=saveNote>Save!</button>
+            <button class="save-btn" @click.prevent=saveNote>Save!</button>
         </form>
     </section>  
     `,
@@ -28,25 +28,23 @@ export default {
     },
     methods: {
         addRow() {
-            var row = { text: ''}
+            var row = { text: '' }
             this.info.todos.push(row)
         },
         saveNote() {
 
             keepService.saveNote(this.info)
                 .then(() => {
-                    console.log(this.info);
-                    this.info.title = ''
-                    this.info.todos = [
-                        {
+                    this.info = {
+                        type: 'keepTodo',
+                        title: '',
+                        todos: [{
                             text: ''
-                        },
-                    ]
+                        }]
+                    }
                 })
-        }
-    },
-    watch: {
-        note(note) {
+        },
+        setInfo(note) {
             const info = {
                 type: note.type,
                 title: note.info.title,
@@ -56,7 +54,16 @@ export default {
                 style: note.style
             }
             this.info = info
-            this.rows = note.info.todos.length
         }
     },
+    watch: {
+        note(note) {
+            this.setInfo(note)
+        }
+    },
+    created() {
+        if (this.note) {
+            this.setInfo(this.note)
+        }
+    }
 }

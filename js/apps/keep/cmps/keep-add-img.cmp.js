@@ -1,48 +1,55 @@
-import {keepService} from '../services/keep-service.js'
+import { keepService } from '../services/keep-service.js'
 
 export default {
     name: 'keepAddImg',
     props: ['note'],
-    template:`
+    template: `
         <form class="keep-edit-form" @submit.prevent="">
             <input type="text" placeholder="Title" v-model="info.title" />
             <input type="text" placeholder="Image Url" v-model="info.imgUrl" />
-            <button @click=saveNote>Save!</button>
+            <button class="save-btn" @click=saveNote>Save!</button>
         </form>  
     `,
-    data(){
+    data() {
         return {
             info: {
                 type: "keepImg",
-                title:'',
+                title: '',
                 imgUrl: null
             }
         }
     },
-    methods:{
-        saveNote(){
+    methods: {
+        saveNote() {
             keepService.saveNote(this.info)
                 .then(() => {
-                    this.info.title = ''
-                    this.info.imgUrl = ''
+                    this.info = {
+                        type: "keepImg",
+                        title: '',
+                        imgUrl: null
+                    }
                 })
         },
-    },
-    watch: {
-        note(note) {
+        setInfo(note) {
             const info = {
                 type: note.type,
-                title : note.info.title,
+                title: note.info.title,
                 imgUrl: note.info.imgUrl,
-                id : note.id,
-                isPinned : note.isPinned,
+                id: note.id,
+                isPinned: note.isPinned,
                 style: note.style
             }
             this.info = info
-            console.log('add img', this.info);
         }
     },
-    created(){
-        console.log(this.note);
+    watch: {
+        note(note) {
+            this.setInfo(note)
+        }
+    },
+    created() {
+        if (this.note) {
+            this.setInfo(this.note)
+        }
     }
 }

@@ -9,13 +9,13 @@ export default {
             <div class="note-header flex justify-space-between align-center">
                 <h3 class="note-title">{{note.info.title}}</h3>
                 <i class="fas fa-thumbtack" @click="pinNote(note)"></i>
-                <!-- <button class="note-delete" @click="deleteNote(note)">X</button> -->
             </div>
             <hr/>
             <ul class="keep-note-todos" v-if="note.info.todos">
-                <li class="keep-note-todo" v-for="todo in note.info.todos">
-                    {{todo.text}}
-                </li>
+                <div class="keep-note-todo"  v-for="(todo,idx) in note.info.todos">
+                    <li >{{todo.text}}</li>
+                    <i @click="deleteTodo(note, idx)" class="fas fa-trash-alt"></i>
+                </div>
             </ul>
             <keep-note-footer :note="note" />
         </section>  
@@ -26,12 +26,12 @@ export default {
         }
     },
     methods:{
-        // deleteNote(note){
-        //     keepService.deleteNote(note)
-        // }
         pinNote(note){
             keepService.pinNote(note)
         },
+        deleteTodo(note,idx){
+            keepService.deleteTodo(note,idx)
+        }
     },
     computed: {
 

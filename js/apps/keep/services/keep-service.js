@@ -186,7 +186,8 @@ export const keepService = {
     getById,
     deleteNote,
     pinNote,
-    changeNoteColor
+    changeNoteColor,
+    deleteTodo
 }
 
 function getNotes() {
@@ -287,6 +288,18 @@ function changeNoteColor(bgc, currNote) {
     } else {
         const idx = gPinnedNotes.findIndex(note => note.id === currNote.id);
         gPinnedNotes[idx].style = bgc;
+        keepStorageService.savePinnedNotesToLocalStorage(gPinnedNotes)
+    }
+}
+
+function deleteTodo(currNote, todoIdx){
+    if (!currNote.isPinned) {
+        const idx = gNotes.findIndex(note => note.id === currNote.id);
+        gNotes[idx].info.todos.splice(todoIdx, 1)
+        keepStorageService.saveNotesToLocalStorage(gNotes)
+    } else {
+        const idx = gPinnedNotes.findIndex(note => note.id === currNote.id);
+        gPinnedNotes[idx].info.todos.splice(todoIdx, 1)
         keepStorageService.savePinnedNotesToLocalStorage(gPinnedNotes)
     }
 }

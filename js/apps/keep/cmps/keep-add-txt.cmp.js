@@ -7,7 +7,7 @@ export default {
         <form class="keep-edit-form" @submit.prevent="">
             <input class="title-input" type="text" placeholder="Title" v-model="info.title" />
             <input class="content-input" type="text" placeholder="Text" v-model="info.text" />
-            <button @click.prevent=saveNote>Save!</button>
+            <button class="save-btn" @click.prevent=saveNote>Save!</button>
         </form>  
     `,
     data() {
@@ -24,10 +24,24 @@ export default {
         saveNote() {
             keepService.saveNote(this.info)
                 .then(() => {
-                    this.info.title = ''
-                    this.info.text = ''
+                    this.info = {
+                        type: "keepTxt",
+                        title: '',
+                        text: '',
+                    }
                 }
-            )
+                )
+        },
+        setInfo(note) {
+            const info = {
+                type: note.type,
+                title: note.info.title,
+                text: note.info.text,
+                id: note.id,
+                isPinned: note.isPinned,
+                style: note.style
+            }
+            this.info = info
         }
     },
     computed: {
@@ -35,21 +49,15 @@ export default {
     },
     watch: {
         note(note) {
-            const info = {
-                type: note.type,
-                title : note.info.title,
-                text : note.info.text,
-                id : note.id,
-                isPinned : note.isPinned,
-                style: note.style
-            }
-            this.info = info
+            this.setInfo(note)
         }
     },
     created() {
-        
+        if (this.note) {
+            this.setInfo(this.note)
+        }
     },
-    destroyed(){
-        
-    } 
+    destroyed() {
+
+    }
 }
