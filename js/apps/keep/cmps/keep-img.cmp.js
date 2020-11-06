@@ -9,10 +9,10 @@ export default {
             <div class="note-header flex justify-space-between align-center">
                 <h3 class="note-title">{{note.info.title}}</h3>
                 <i class="fas fa-thumbtack" @click="pinNote(note)"></i>
-                <!-- <button class="note-delete" @click="deleteNote(note)">X</button> -->
             </div>
             <hr/>
             <img v-if="note.info.imgUrl" :src="note.info.imgUrl" />
+            <p class="note-time">{{note.time}}</p>
             <keep-note-footer :note="note" />
         </section>  
     `,
@@ -22,9 +22,6 @@ export default {
         }
     },
     methods:{
-        // deleteNote(note){
-        //     keepService.deleteNote(note)
-        // }
         pinNote(note){
             keepService.pinNote(note)
         },

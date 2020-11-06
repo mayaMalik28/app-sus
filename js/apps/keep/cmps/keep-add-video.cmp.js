@@ -1,4 +1,5 @@
 import { keepService } from '../services/keep-service.js'
+import {eventBus} from '../../../services/event-bus-service.js'
 
 export default {
     name: 'keepAddVideo',
@@ -29,6 +30,8 @@ export default {
             this.info.videoUrl = videoId
             keepService.saveNote(this.info)
                 .then(() => {
+                    if(this.info.id) eventBus.$emit('show-msg', `"${this.info.title}" was Edited`)
+                    else eventBus.$emit('show-msg', `"${this.info.title}" was saved`)
                     this.info = {
                         type: "keepVideo",
                         title: '',
@@ -36,7 +39,7 @@ export default {
                     }
                 })
         },
-        setInfo() {
+        setInfo(note) {
             const info = {
                 type: note.type,
                 title: note.info.title,

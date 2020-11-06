@@ -10,6 +10,7 @@ var pinnedNotes = [
         type: "keepImg",
         isPinned: true,
         style: 'lightgoldenrodyellow',
+        time: 'Created at Wen Nov 04 2020 19:32:16',
         info: {
             title: "Not from Google",
             text: null,
@@ -24,6 +25,7 @@ var pinnedNotes = [
         type: "keepTxt",
         isPinned: true,
         style: 'rgb(255 204 212)',
+        time: 'Edited at Fri Nov 06 2020 18:15:06',
         info: {
             title: "Sarcasm",
             text: "It's like punching people in the face, but with words",
@@ -38,6 +40,7 @@ var pinnedNotes = [
         type: "keepVideo",
         isPinned: true,
         style: 'rgb(171 255 153)',
+        time: 'Edited at Sun Oct 18 2020 21:42:50',
         info: {
             title: "For later",
             text: null,
@@ -52,6 +55,7 @@ var pinnedNotes = [
         type: "keepTodo",
         isPinned: true,
         style: 'rgb(187 221 253)',
+        time: 'Created at Tue Nov 03 2020 08:25:02',
         info: {
             title: "Rapper name ideas",
             text: null,
@@ -82,6 +86,7 @@ var pinnedNotes = [
         type: "keepImg",
         isPinned: true,
         style: 'rgb(191 191 191)',
+        time: 'Created at Sun Sep 14 2020 13:35:45',
         info: {
             title: "When Yaron burn someone in the class",
             text: null,
@@ -99,6 +104,7 @@ var notes = [
         type: "keepTodo",
         isPinned: false,
         style: 'rgb(153 255 187)',
+        time: 'Edited at Sat Nov 01 2020 07:55:46',
         info: {
             title: "Don't forget this time!",
             text: null,
@@ -123,6 +129,7 @@ var notes = [
         type: "keepVideo",
         isPinned: false,
         style: 'rgb(232 255 153)',
+        time: 'Edited at Fri Oct 22 2020 15:27:33',
         info: {
             title: "Vines that toast my buns",
             text: null,
@@ -137,6 +144,7 @@ var notes = [
         type: "keepImg",
         isPinned: false,
         style: 'rgb(56 47 47)',
+        time: 'Edited at Sat Nov 04 2020 14:32:12',
         info: {
             title: "A hard one indeed",
             text: null,
@@ -151,6 +159,7 @@ var notes = [
         type: "keepTxt",
         isPinned: false,
         style: 'rgb(171 255 153)',
+        time: 'Edited at Wen Sep 25 2020 17:44:16',
         info: {
             title: "Haiku",
             text: `Old pond
@@ -167,6 +176,7 @@ var notes = [
         type: "keepVideo",
         isPinned: false,
         style: 'rgb(251 204 255)',
+        time: 'Created at Fri Nov 02 2020 13:03:17',
         info: {
             title: "For dark times",
             text: null,
@@ -228,10 +238,18 @@ function saveNote(note) {
     if (!note.id) {
         tempNote.id = utilService.makeId()
         tempNote.isPinned = false
+        var fullTimeStamp = new Date().toString()
+        var idx = fullTimeStamp.indexOf('G')
+        var timeStamp = fullTimeStamp.substr(0, idx)
+        tempNote.time = `Created at ${timeStamp}`
     } else {
         tempNote.id = note.id
         tempNote.isPinned = note.isPinned
         tempNote.style = note.style
+        var fullTimeStamp = new Date().toString()
+        var idx = fullTimeStamp.indexOf('G')
+        var timeStamp = fullTimeStamp.substr(0, idx)
+        tempNote.time = `Edited at ${timeStamp}`
     }
     if (tempNote.isPinned) {
         const idx = gPinnedNotes.findIndex(note => note.id === tempNote.id);

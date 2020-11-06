@@ -9,10 +9,10 @@ export default {
             <div class="note-header flex justify-space-between align-center">
                 <h3 class="note-title">{{note.info.title}}</h3>
                 <i class="fas fa-thumbtack" @click="pinNote(note)"></i>
-                <!-- <button class="note-delete" @click="deleteNote(note)">X</button> -->
             </div>
             <hr/>
             <p>{{note.info.text}}</p>
+            <p class="note-time">{{note.time}}</p>
             <keep-note-footer :note="note" />
         </section>  
     `,

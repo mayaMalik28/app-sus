@@ -10,7 +10,7 @@
 
 
 .note-header{
-    height: 30px;
+    height: 40px;
 }
 
 .note-delete{
@@ -42,4 +42,8 @@
 
 .keep-note-txt{
     min-width: 300px;
+}
+
+.note-time{
+    font-size: 0.7rem;
 }

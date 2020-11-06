@@ -1,7 +1,9 @@
 export default {
     template: `
         <nav class="main-nav flex align-center justify-space-between">
-            <router-link to="/" exact>Home</router-link>
+            <div>
+                <router-link to="/" exact><i class="fab fa-earlybirds"></i>Home</router-link>
+            </div>
             <ul>
                 <li>
                     <router-link to="/book" exact>Books</router-link>

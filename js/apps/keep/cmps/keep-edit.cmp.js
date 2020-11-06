@@ -60,7 +60,8 @@ export default {
             if(note.type === 'keepImg') this.type = 'keepAddImg'
             else if(note.type === 'keepTxt') this.type = 'keepAddTxt'
             else if(note.type === 'keepTodo') this.type = 'keepAddTodo'
-            else if(note.type === 'keepVideo') this.type = 'keepAddVideo'
+            else this.type = 'keepAddVideo'
+
             this.note = JSON.parse(JSON.stringify(note))
         })
     }

@@ -1,4 +1,5 @@
 import { keepService } from '../services/keep-service.js'
+import {eventBus} from '../../../services/event-bus-service.js'
 
 export default {
     name: 'keepAddTodo',
@@ -9,7 +10,7 @@ export default {
             <input type="text" placeholder="Title" v-model="info.title" />
             <div>
                 <input v-for="(todo, idx) in info.todos" type="text" placeholder="Add Item" v-model="todo.text" />
-                <button @click="addRow">+</button>
+                <button type="button" @click="addRow">+</button>
             </div>
             <button class="save-btn" @click.prevent=saveNote>Save!</button>
         </form>
@@ -35,6 +36,8 @@ export default {
 
             keepService.saveNote(this.info)
                 .then(() => {
+                    if(this.info.id) eventBus.$emit('show-msg', `"${this.info.title}" was Edited`)
+                    else eventBus.$emit('show-msg', `"${this.info.title}" was saved`)
                     this.info = {
                         type: 'keepTodo',
                         title: '',

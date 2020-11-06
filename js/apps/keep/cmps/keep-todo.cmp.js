@@ -17,6 +17,7 @@ export default {
                     <i @click="deleteTodo(note, idx)" class="fas fa-trash-alt"></i>
                 </div>
             </ul>
+            <p class="note-time">{{note.time}}</p>
             <keep-note-footer :note="note" />
         </section>  
     `,
