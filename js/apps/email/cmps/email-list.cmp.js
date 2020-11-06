@@ -2,11 +2,19 @@ import emailPreview from './email-preview.cmp.js'
 import { emailService } from '../services/email-service.js'
 import { utilService } from '../../../services/util-service.js'
 import { eventBus, EVENT_FILTER_CATEGORY, EVENT_FILTER_EMAIL } from '../../../services/event-bus-service.js'
+// import emailFilter from '../cmps/email-filter.cmp.js'
+// import emailStatus from '../cmps/email-status.cmp.js'
+
+
 
 
 export default {
     template: `
-    <section :ref="filterBy.category"  v-if="emails" class="email-list">
+    <section v-if="emails" class="email-list">
+    <!-- <div class="email-app flex justify-space-between">
+            <email-status/>
+            <email-filter/>
+        </div> -->
         <ul>
         <email-preview
         v-for= "email in emailsToShow"
@@ -22,7 +30,7 @@ export default {
         return {
             emails: null,
             filterBy: {
-                category: 'isInbox',
+                // category: 'isInbox',
                 isSortByText: false,
                 isRead: null,
 
@@ -48,21 +56,21 @@ export default {
         emailService.getEmails()
             .then(emails => this.emails = emails);
 
-        emailService.getCurrCategory()
-            .then((category) => this.filterBy.category = category)
+        this.filterBy.category = emailService.getCurrCategory()
+        console.log(this.filterBy.category);
 
         // should it be with promiss?
 
 
         eventBus.$on(EVENT_FILTER_EMAIL, (filterBy) => {
-            this.filterBy.isSortByText = filterBy.isSortByText;
-            this.filterBy.isRead = filterBy.isRead;
-            console.log('isSortByText', this.filterBy.isSortByText);
-        })
-        eventBus.$on(EVENT_FILTER_CATEGORY, (category) => {
-            this.filterBy.category = category;
-            // console.log(this.filterBy.category);
-        })
+                this.filterBy.isSortByText = filterBy.isSortByText;
+                this.filterBy.isRead = filterBy.isRead;
+                console.log('isSortByText', this.filterBy.isSortByText);
+            })
+            // eventBus.$on(EVENT_FILTER_CATEGORY, (category) => {
+            //     this.filterBy.category = category;
+            //     // console.log(this.filterBy.category);
+            // })
 
     }
 }

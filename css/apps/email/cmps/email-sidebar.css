@@ -1,3 +1,16 @@
 .sidebar {
     width: 150px;
+    /* position: absolute; */
+    /* left: 0; */
+    height: 100%;
+    background-color: #fff;
+    border-right: gray 1px solid;
+    border-left: gray 1px solid;
+}
+
+.sidebar p {
+    /* background-color: green; */
+    margin: 0;
+    padding: 15px;
+    border-bottom: grey 1px solid;
 }

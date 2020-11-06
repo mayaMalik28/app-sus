@@ -7,7 +7,7 @@ const options = {
     el: '#app',
     router: myRouter,
     template: `
-        <section class="app flex-column center">
+        <section class="app flex-column align-center">
             <app-header />
             <main class="general-container">
                 <router-view></router-view>

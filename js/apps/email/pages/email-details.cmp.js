@@ -8,7 +8,7 @@ export default {
     template: `
     <section v-if="email">
     <!-- <email-details v-if="email.repliedId"></email-details> -->
-    <email-details-reaplied v-if="email.repliedId" :id="email.id"/>
+    <email-details-reply v-if="email.repliedId" :id="email.repliedId"/>
         <h3>{{email.subject}}</h3>
         <p v-if="email.isInbox">from: {{email.from}}</p>
         <p v-if="email.isSent">to: {{email.to}}</p>

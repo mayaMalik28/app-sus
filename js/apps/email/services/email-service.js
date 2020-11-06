@@ -160,21 +160,33 @@ function saveEmailsToLocal() {
 }
 
 function countReadEmails() {
+    const emailsByCattegory = getEmailsByCategory();
     var count = 0
-    emails.forEach(email => {
+        // emails.forEach(email => {
+    emailsByCattegory.forEach(email => {
         if (email.isRead) count++
     })
     return count;
 }
 
 function countEmails() {
-    return emails.length;
+    const emailsByCattegory = getEmailsByCategory();
+    // return emails.length;
+    return emailsByCattegory.length;
 }
 
 function setCurrCategory(category) {
     currCategory = category;
+    console.log(currCategory);
 }
 
 function getCurrCategory() {
-    return Promise.resolve(currCategory);
+    return currCategory;
+}
+
+function getEmailsByCategory() {
+    console.log(currCategory);
+    console.log(emails.filter((email) => email[currCategory]));
+    return emails.filter((email) => email[currCategory]);
+
 }

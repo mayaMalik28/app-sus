@@ -4,16 +4,27 @@ import { eventBus, EVENT_FILTER_CATEGORY } from '../../../services/event-bus-ser
 
 export default {
     template: `
-    <section class="sidebar flex-column">
-        <button @click="openCompose">compose + </button>
-        <button @click="changeFilterBy('isInbox')">Inbox</button>
-        <button @click="changeFilterBy('isStarred')">Starred</button>
+    <!-- <aside class="sidebar"> -->
+    <!-- <nav class="flex"> -->
+        <aside class="sidebar flex-column">
+            <email-compose v-if="isCompose" @closeCompose="closeCompose"/>
+            <button @click="openCompose">compose + </button>
+            <router-link to="/email/inbox"><p @click="changeFilterBy('isInbox')" >Inbox</p></router-link>
+            <router-link to="/email/sent"><p @click="changeFilterBy('isSent')" >Sent</p></router-link>
+            <router-link to="/email/starred"><p @click="changeFilterBy('isStarred')" >Starred</p></router-link>
+            <router-link to="/email/drafts"><p @click="changeFilterBy('isDraft')" >Drafts</p></router-link> 
+            <!-- <router-link @click="changeFilterBy('isSent')" to="/email/sent">Sent</router-link> -->
+        </aside>
+            <!-- <router-view></router-view>
+        </nav> -->
+
+        <!-- <button @click="changeFilterBy('isInbox')">Inbox</button> -->
+        <!-- <button @click="changeFilterBy('isStarred')">Starred</button> -->
         <!-- <button @click="changeFilterBy('isLater')">Later</button> -->
-        <button @click="changeFilterBy('isSent')">Sent</button>
-        <button @click="changeFilterBy('isDraft')">Drafts</button>
+        <!-- <button @click="changeFilterBy('isSent')">Sent</button> -->
+        <!-- <button @click="changeFilterBy('isDraft')">Drafts</button> -->
         <!-- <email-compose/> -->
-        <email-compose v-if="isCompose" @closeCompose="closeCompose"/>
-    </section>
+    <!-- </aside> -->
         `,
     data() {
         return {
@@ -23,9 +34,12 @@ export default {
     },
     methods: {
         changeFilterBy(by) {
-            this.category = by;
+            // this.category = by;
+            console.log(by);
             emailService.setCurrCategory(by);
-            eventBus.$emit(EVENT_FILTER_CATEGORY, this.category)
+            // if (by === 'isInbox') this.$router.push(`/email/inbox`);
+            // if (by === 'isSent') this.$router.push(`/email/sent`);
+            // eventBus.$emit(EVENT_FILTER_CATEGORY, this.category)
         },
         openCompose() {
             this.isCompose = true

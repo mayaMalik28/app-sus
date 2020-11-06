@@ -3,6 +3,13 @@
 @import './cmps/email-preview.css';
 @import './cmps/email-compose.css';
 @import './cmps/email-reply.css';
-.email-app {
+@import './cmps/email-sidebar.css';
+.email-app-container {
+    /* background-color: grey; */
+    height: 100%;
     padding: 10px
+}
+
+.email-main {
+    flex: 1
 }

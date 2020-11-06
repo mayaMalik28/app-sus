@@ -4,12 +4,16 @@
 @import './apps/email/email-main.css';
 @import './apps/keep/keep-main.css';
 @import './cmps//user-msg.css';
-
-html{
+html {
     scroll-behavior: smooth;
+}
+
+.app {
+    height: 100vh;
 }
 
 .general-container {
     width: 90%;
     max-width: 1200px;
+    height: 100%;
 }
