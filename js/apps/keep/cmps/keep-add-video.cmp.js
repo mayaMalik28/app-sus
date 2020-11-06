@@ -41,7 +41,8 @@ export default {
                 title : note.info.title,
                 videoUrl: note.info.videoUrl,
                 id : note.id,
-                isPinned : note.isPinned
+                isPinned : note.isPinned,
+                style: note.style
             }
             this.info = info
         }

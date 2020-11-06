@@ -35,7 +35,8 @@ export default {
                 title : note.info.title,
                 imgUrl: note.info.imgUrl,
                 id : note.id,
-                isPinned : note.isPinned
+                isPinned : note.isPinned,
+                style: note.style
             }
             this.info = info
             console.log('add img', this.info);

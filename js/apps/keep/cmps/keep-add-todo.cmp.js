@@ -8,7 +8,6 @@ export default {
         <form class="keep-edit-form" @submit.prevent="">
             <input type="text" placeholder="Title" v-model="info.title" />
             <div>
-                <!-- <input v-for="(row, idx) in rows" type="text" placeholder="Add Item" v-model="info.todos[idx].text" /> -->
                 <input v-for="(todo, idx) in info.todos" type="text" placeholder="Add Item" v-model="todo.text" />
                 <button @click="addRow">+</button>
             </div>
@@ -53,7 +52,8 @@ export default {
                 title: note.info.title,
                 todos: note.info.todos,
                 id: note.id,
-                isPinned: note.isPinned
+                isPinned: note.isPinned,
+                style: note.style
             }
             this.info = info
             this.rows = note.info.todos.length

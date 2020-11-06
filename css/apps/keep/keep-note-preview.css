@@ -3,8 +3,9 @@
     box-shadow: 3px 4px 14px 0px #888888;
     max-width: 320px;
     min-width: 220px;
-    margin: 10px;
+    margin-bottom: 10px;
     padding: 6px;
+    break-inside: avoid-column;
 }
 
 
@@ -21,7 +22,7 @@
 }
 
 .keep-note-preview img{
-    max-width: 300px;
+    width: 100%;
 }
 
 .keep-note-todos{
@@ -32,6 +33,8 @@
     list-style: circle;
     margin-left: 8px;
     width: 250px;
+    margin-bottom: 5px;
+    font-size: 1.1rem;
 }
 
 .keep-note-txt{

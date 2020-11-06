@@ -41,6 +41,7 @@ export default {
                 text : note.info.text,
                 id : note.id,
                 isPinned : note.isPinned,
+                style: note.style
             }
             this.info = info
         }

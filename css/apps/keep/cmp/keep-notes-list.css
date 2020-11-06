@@ -1,6 +1,9 @@
 .keep-notes-list {
-    display: flex;
+    /* display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
+    justify-content: center; */
+    column-count: 3;
+    /* column-width: 300px; */
+    column-gap: 20px;
 }
