@@ -15,10 +15,15 @@
 }
 
 .sidebar .compose-btn {
-    font-size: 1.1em;
+    font-size: 1.4em;
     padding: 10px;
     border-radius: 10px;
-    background: rgb(247, 245, 245);
+    background-color: transparent;
+    color: rgb(179, 179, 179)
+}
+
+.sidebar .compose-btn i {
+    margin-left: 5px;
 }
 
 .sidebar .category-btn {

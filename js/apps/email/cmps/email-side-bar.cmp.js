@@ -6,7 +6,7 @@ export default {
     template: `
         <aside class="sidebar flex-column align-center">
             <email-compose v-if="isCompose" @closeCompose="closeCompose" />
-            <button class="compose-btn" @click="openCompose">compose <i class="fas fa-plus"></i></button>
+            <button class="compose-btn logo" @click="openCompose">Compose<span><i class="fas fa-plus"></i></span></button>
             <button class="category-btn" @click="changeCategoryBy('isInbox')"><i class="fas fa-inbox"></i>Inbox</button>
             <button class="category-btn" @click="changeCategoryBy('isSent')"><i class="fas fa-share-square"></i>Sent</button>
             <button class="category-btn" @click="changeCategoryBy('isStarred')"><i class="fas fa-star"></i>Starred</button>

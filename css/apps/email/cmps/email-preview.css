@@ -6,16 +6,17 @@
     font-size: 0.875em;
 }
 
-.email-preview:hover {
+
+/* .email-preview:hover {
     background-color: rgb(116, 116, 116);
-}
+} */
 
 .email-preview:hover {
     cursor: pointer;
     /* border-bottom: rgb(190, 190, 190) 0.5px solid; */
     border: rgb(100, 100, 100) 0.5px solid;
     box-shadow: 1px 1px 2px rgb(190, 190, 190);
-    font-size: 0.875em;
+    /* font-size: 0.875em; */
 }
 
 .email-preview a {
