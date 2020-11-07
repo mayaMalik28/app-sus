@@ -28,6 +28,10 @@
 @media (max-width: 955px) {
     .email-app-container {
         position: relative;
-        display: inline-block;
+        /* display: inline-block; */
+    }
+    .email-main.light {
+        background-color: rgb(233, 233, 233);
+        z-index: -1;
     }
 }
