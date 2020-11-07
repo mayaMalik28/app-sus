@@ -5,7 +5,7 @@ import { eventBus, EVENT_FILTER_CATEGORY } from '../../../services/event-bus-ser
 export default {
     template: `
         <aside class="sidebar flex-column align-center">
-            <email-compose v-if="isCompose" @closeCompose="closeCompose"/>
+            <email-compose v-if="isCompose" @closeCompose="closeCompose" />
             <button class="compose-btn" @click="openCompose">compose <i class="fas fa-plus"></i></button>
             <router-link class="category-btn" to="/email/inbox"><p @click="changeCategoryBy('isInbox')"><i class="fas fa-inbox"></i>Inbox</p></router-link>
             <router-link class="category-btn" to="/email/sent"><p @click="changeCategoryBy('isSent')"><i class="fas fa-share-square"></i>Sent</p></router-link>
@@ -16,7 +16,8 @@ export default {
     data() {
         return {
             category: null,
-            isCompose: false
+            isCompose: false,
+            noteData: null
         }
     },
     methods: {
@@ -35,7 +36,11 @@ export default {
         emailCompose
     },
     created() {
-
+        eventBus.$on('noteToMail', (note) => {
+            this.openCompose()
+            console.log(this.isCompose);
+            console.log(note);
+        })
     }
 }
 // import { emailService } from '../services/email-service.js'

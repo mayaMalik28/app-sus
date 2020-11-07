@@ -1,10 +1,10 @@
-import {keepService} from '../services/keep-service.js'
+import { keepService } from '../services/keep-service.js'
 import { eventBus } from '../../../services/event-bus-service.js'
 
 export default {
     name: 'keepNoteFooter',
     props: ['note'],
-    template:`
+    template: `
     <section >
         <ul class="keep-note-footer" >
             <li>
@@ -40,26 +40,26 @@ export default {
         </ul>
     </section>
     `,
-    data(){
-        return{
+    data() {
+        return {
             showColors: false
         }
     },
-    methods:{
-        deleteNote(note){
+    methods: {
+        deleteNote(note) {
             keepService.deleteNote(note)
         },
-        changeNoteColor(event, note){
+        changeNoteColor(event, note) {
             this.showColors = false
             keepService.changeNoteColor(event.target.style.backgroundColor, note)
         },
-        editNote(note){
+        editNote(note) {
             document.getElementById("keep-editor").scrollIntoView();
             eventBus.$emit('editNote', note)
         },
-        sendAsMail(note){
+        sendAsMail(note) {
+            this.$router.push('/email/inbox')
             eventBus.$emit('noteToMail', note);
-            this.$router.push('/email')
         }
     }
 }

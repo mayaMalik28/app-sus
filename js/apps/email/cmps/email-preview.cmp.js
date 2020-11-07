@@ -11,7 +11,7 @@ export default {
             <i :class="isStar" class="fa-star star" @click.stop="toggleStar"></i>
                     <p v-if="category === 'isInbox'">{{email.from}}</p>
                     <p v-if="category === 'isSent'">to: {{email.to}}</p>
-                    <div class="flex center">
+                    <div class="email-preview-content flex center">
                         <p>{{email.subject}} -</p>
                         <long-text :text="email.body" :maxLength="30"/>
                     </div>

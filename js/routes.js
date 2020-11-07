@@ -36,12 +36,16 @@ const myRoutes = [{
                 path: 'drafts',
                 component: emailDrafts
             },
+            {
+                path: ':emailId',
+                component: emailDetails
+            },
         ]
     },
-    {
-        path: '/email/:emailId',
-        component: emailDetails,
-    },
+    // {
+    //     path: '/email/:emailId',
+    //     component: emailDetails,
+    // },
     {
         path: '/keep',
         component: keepApp

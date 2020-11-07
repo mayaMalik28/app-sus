@@ -33,6 +33,8 @@ export default {
                 // category: 'isInbox',
                 isSortByText: false,
                 isRead: null,
+                isTextinc: null,
+                isDateDec: null
 
             }
         }
@@ -65,6 +67,8 @@ export default {
         eventBus.$on(EVENT_FILTER_EMAIL, (filterBy) => {
                 this.filterBy.isSortByText = filterBy.isSortByText;
                 this.filterBy.isRead = filterBy.isRead;
+                this.filterBy.isTextinc = filterBy.isTextinc;
+                this.filterBy.isDateDec = filterBy.isDateDec;
                 console.log('isSortByText', this.filterBy.isSortByText);
             })
             // eventBus.$on(EVENT_FILTER_CATEGORY, (category) => {

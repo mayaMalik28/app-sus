@@ -4,10 +4,10 @@
 @import './cmps/email-compose.css';
 @import './cmps/email-reply.css';
 @import './cmps/email-sidebar.css';
+@import './cmps/email-details.css';
 .email-app-container {
     /* background-color: grey; */
     height: 100%;
-    padding: 10px;
     width: 100vw;
 }
 

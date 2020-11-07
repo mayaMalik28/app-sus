@@ -20,6 +20,8 @@ export default {
         return {
             filterBy: {
                 isSortByText: true,
+                isTextinc: true,
+                isDateDec: false,
                 isRead: null,
             },
         }

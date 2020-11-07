@@ -1,3 +1,4 @@
+import { eventBus } from '../../../services/event-bus-service.js';
 import { emailService } from '../services/email-service.js'
 
 export default {
@@ -47,8 +48,20 @@ export default {
         },
         sendMail() {
             emailService.sendEmail(JSON.parse(JSON.stringify(this.email)))
-                .then(result => console.log(result))
-                .catch(error => console.log(error))
+                .then(result => {
+                    console.log(result);
+                    eventBus.$emit('show-msg', {
+                        text: result,
+                        type: 'success'
+                    })
+                })
+                .catch(error => {
+                    console.log(error);
+                    eventBus.$emit('show-msg', {
+                        text: error,
+                        type: 'error'
+                    })
+                })
 
         },
         saveAsDraft() {
