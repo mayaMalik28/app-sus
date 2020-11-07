@@ -1,16 +1,38 @@
 .sidebar {
-    width: 150px;
+    width: 250px;
     /* position: absolute; */
     /* left: 0; */
     height: 100%;
     background-color: #fff;
-    border-right: gray 1px solid;
-    border-left: gray 1px solid;
+    padding: 5px;
+    /* border-right: gray 1px solid;
+    border-left: gray 1px solid; */
 }
 
 .sidebar p {
     /* background-color: green; */
     margin: 0;
     padding: 15px;
-    border-bottom: grey 1px solid;
+    border-bottom: rgb(148, 148, 148) 1px solid;
+    text-align: center;
+}
+
+.sidebar .compose-btn {
+    font-size: 1.1em;
+    padding: 10px;
+    border-radius: 10px;
+    background: rgb(247, 245, 245);
+}
+
+.sidebar .category-btn {
+    font-size: 1.1em;
+    padding: 10px;
+    border-radius: 10px;
+    color: rgb(109, 108, 108);
+    justify-self: center;
+    align-self: stretch;
+}
+
+.sidebar .category-btn i {
+    margin-right: 7px;
 }

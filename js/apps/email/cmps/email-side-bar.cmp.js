@@ -4,13 +4,13 @@ import { eventBus, EVENT_FILTER_CATEGORY } from '../../../services/event-bus-ser
 
 export default {
     template: `
-        <aside class="sidebar flex-column">
+        <aside class="sidebar flex-column align-center">
             <email-compose v-if="isCompose" @closeCompose="closeCompose"/>
-            <button @click="openCompose">compose + </button>
-            <router-link to="/email/inbox"><p @click="changeCategoryBy('isInbox')" >Inbox</p></router-link>
-            <router-link to="/email/sent"><p @click="changeCategoryBy('isSent')" >Sent</p></router-link>
-            <router-link to="/email/starred"><p @click="changeCategoryBy('isStarred')" >Starred</p></router-link>
-            <router-link to="/email/drafts"><p @click="changeCategoryBy('isDraft')" >Drafts</p></router-link> 
+            <button class="compose-btn" @click="openCompose">compose <i class="fas fa-plus"></i></button>
+            <router-link class="category-btn" to="/email/inbox"><p @click="changeCategoryBy('isInbox')"><i class="fas fa-inbox"></i>Inbox</p></router-link>
+            <router-link class="category-btn" to="/email/sent"><p @click="changeCategoryBy('isSent')"><i class="fas fa-share-square"></i>Sent</p></router-link>
+            <router-link class="category-btn" to="/email/starred"><p @click="changeCategoryBy('isStarred')"><i class="fas fa-star"></i>Starred</p></router-link>
+            <router-link class="category-btn" to="/email/drafts"><p @click="changeCategoryBy('isDraft')"><i class="fab fa-firstdraft"></i>Drafts</p></router-link> 
         </aside>
         `,
     data() {
@@ -33,6 +33,9 @@ export default {
     },
     components: {
         emailCompose
+    },
+    created() {
+
     }
 }
 // import { emailService } from '../services/email-service.js'

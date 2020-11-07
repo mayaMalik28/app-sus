@@ -121,6 +121,8 @@ function getEmptyEmailToSend() {
 }
 
 function sendEmail(email) {
+    if (email.to === '') return Promise.reject('You didn\'t mantion who is getting this email')
+    if (email.body === '') return Promise.reject('What do you want to sey?')
     email.isSent = true;
     if (email.to === 'me') {
         email.isInbox = true;
@@ -143,7 +145,7 @@ function saveEmail(email) {
             else emails.push(email)
             saveEmailsToLocal();
         })
-    return Promise.resolve()
+    return Promise.resolve('saved')
 }
 
 function removeEmail(emailId) {

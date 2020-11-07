@@ -22,7 +22,8 @@ export default {
                     </div>
             <!-- <button @click.stop="removrEmail(email.id)">Remove</button> -->
         </div>
-        <email-compose @closeCompose="closeCompose" v-if="isCompose" :email="email"/>
+        <!-- <email-compose @closeCompose="closeCompose" v-if="isCompose" :email="email"/> -->
+        <email-compose @closeCompose="closeCompose" v-if="isCompose" :email="JSON.parse(JSON.stringify(email))"/>
         <!-- <pre>{{email}}</pre> -->
     </li>
         `,

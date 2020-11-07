@@ -21,30 +21,39 @@ export default {
         <label class="flex">
             <p>Subject</p><input type="text" v-model="email.subject">
         </label>
+        <!-- <img src="" alt=""> -->
         <textarea rows="10" cols="50" v-model="email.body" required>
         </textarea>
         <div class="compose-buttons">
             <button type="submit" @click.stop="sendMail">Send</button>
-            <button type="submit" @click.stop="saveAsDraft">Save as draft</button>
-            <button @click.prevent.stop="closeCompose">Trash</button>
+            <button type="button" @click.stop="saveAsDraft">Save as draft</button>
+            <button type="button" @click.prevent.stop="closeCompose">Trash</button>
+            <!-- <button type="button" @click.prevent.stop="AddImg">Add Img</button> -->
         </div>
+
+
+        
 </form>
     </section>
         `,
     data() {
-        return {}
+        return {
+            // imgUrl: null
+        }
     },
     methods: {
         closeCompose() {
             this.$emit('closeCompose');
         },
         sendMail() {
-            console.log('send');
-            emailService.sendEmail(this.email)
+            emailService.sendEmail(JSON.parse(JSON.stringify(this.email)))
+                .then(result => console.log(result))
+                .catch(error => console.log(error))
+
         },
         saveAsDraft() {
-            emailService.saveEmailAsDraft(this.email)
-                // this.closeCompose()
+            emailService.saveEmailAsDraft(JSON.parse(JSON.stringify(this.email)));
+            this.closeCompose();
         }
     },
     created() {

@@ -4,18 +4,18 @@
 @import './cmp//keep-note-footer.css';
 @import './cmp/keep-pinned-notes-list.css';
 @import './list-header.css';
-
-.keep-app{
+.keep-app {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    max-width: 1200px;
 }
 
-i:hover{
+i:hover {
     cursor: pointer;
 }
 
-.keep-filter{
+.keep-filter {
     margin-top: 10px;
 }
