@@ -1,19 +1,39 @@
-.about-page{
-    width: 1000px;
+.about-page {
+    color: rgb(192, 192, 192);
+    /* width: 1000px; */
+    margin-left: 40px;
 }
 
-.person-card{
+.about-page h1 {
+    margin: 20px;
+}
+
+.person-card {
     display: flex;
     margin-bottom: 30px;
+    margin-top: 20px;
 }
 
-.person-txt{
-    margin-left: 20px;
+.person-txt {
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-top: 30px;
+    width: 70%;
 }
 
-.person-img{
-    width: 200px;
-    height: 200px;
+.person-img {
+    width: 180px;
+    height: 180px;
     object-fit: cover;
     border-radius: 50%;
+}
+
+@media (max-width: 530px) {
+    .person-card {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        /* margin-bottom: 30px;
+        margin-top: 20px; */
+    }
 }

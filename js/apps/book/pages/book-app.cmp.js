@@ -1,5 +1,5 @@
 export default {
-    template:`
-        <h1>Books</h1>
+    template: `
+        <h1></h1>
     `
 }
