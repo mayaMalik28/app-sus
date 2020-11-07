@@ -5,13 +5,15 @@
 @import './apps/keep/keep-main.css';
 @import './cmps//user-msg.css';
 @import './home.css';
+@import './about.css';
 
 html {
     scroll-behavior: smooth;
+    background-color: rgb(49 49 47);
 }
 
 .app {
-    height: 100vh;
+    
 }
 
 .general-container {
