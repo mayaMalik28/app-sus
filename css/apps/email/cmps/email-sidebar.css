@@ -52,8 +52,8 @@
 }
 
 .btn-hamburger {
-    position: fixed;
-    top: 90px;
+    position: absolute;
+    top: 15px;
     left: 10px;
     background-color: transparent;
     font-size: 1.5em;
