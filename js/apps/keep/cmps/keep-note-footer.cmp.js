@@ -16,6 +16,9 @@ export default {
             <li>
                 <i @click="editNote(note)" class="fas fa-edit"></i>
             </li>
+            <li>
+                <i @click="sendAsMail(note)" class="fas fa-envelope"></i>
+            </li>
         </ul>
         <ul v-if="showColors" class="colors">
             <li class="color" style="background-color: lightgoldenrodyellow" @click="changeNoteColor($event,note)"></li>
@@ -53,6 +56,10 @@ export default {
         editNote(note){
             document.getElementById("keep-editor").scrollIntoView();
             eventBus.$emit('editNote', note)
+        },
+        sendAsMail(note){
+            eventBus.$emit('noteToMail', note);
+            this.$router.push('/email')
         }
     }
 }
