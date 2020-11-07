@@ -1,3 +1,5 @@
+@import '../../cmps/fonts.css';
+
 .keep-note-preview {
     border-radius: 10px;
     box-shadow: 3px 4px 14px 0px #888888;
@@ -11,6 +13,9 @@
 
 .note-header{
     height: 40px;
+    font-family: note-header;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
 }
 
 .note-delete{

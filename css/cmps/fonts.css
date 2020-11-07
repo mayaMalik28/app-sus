@@ -2,3 +2,8 @@
     font-family: logo-font;
     src: url(../../js/assets/fonts/FredokaOne-Regular.ttf)
 }
+
+@font-face {
+    font-family: note-header;
+    src: url(../../js//assets/fonts/keep-note-header.ttf)
+}

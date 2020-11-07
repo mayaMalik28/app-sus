@@ -1,7 +1,19 @@
 .about-page{
+    width: 1000px;
+}
 
+.person-card{
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.person-txt{
+    margin-left: 20px;
 }
 
 .person-img{
     width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
 }
