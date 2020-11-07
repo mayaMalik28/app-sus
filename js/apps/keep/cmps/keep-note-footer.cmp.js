@@ -36,7 +36,7 @@ export default {
             <li class="color" style="background-color: rgb(255 170 153)" @click="changeNoteColor($event,note)"></li>
             <li class="color" style="background-color: rgb(191 191 191)" @click="changeNoteColor($event,note)"></li>
             <li class="color" style="background-color: rgb(128 128 128)" @click="changeNoteColor($event,note)"></li>
-            <li class="color" style="background-color: rgb(56 47 47)" @click="changeNoteColor($event,note)"></li>
+            <li class="color" style="background-color: rgb(201, 198, 186)" @click="changeNoteColor($event,note)"></li>
         </ul>
     </section>
     `,

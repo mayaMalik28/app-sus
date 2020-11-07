@@ -143,7 +143,7 @@ var notes = [
         id: utilService.makeId(),
         type: "keepImg",
         isPinned: false,
-        style: 'rgb(56 47 47)',
+        style: 'rgb(201, 198, 186)',
         time: 'Edited at Sat Nov 04 2020 14:32:12',
         info: {
             title: "A hard one indeed",

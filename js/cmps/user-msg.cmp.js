@@ -6,7 +6,7 @@ export default {
             <button class="user-msg-btn" @click="msg.text=null">x</button>
             <div class="user-msg-content">
                 <i v-if="msg.type==='success'" class="v-icon far fa-check-circle"></i>
-                <i v-if="msg.type==='error'" class="far fa-times-circle"></i>
+                <i v-if="msg.type==='error'" class="x-icon far fa-times-circle"></i>
                 <!-- <i class="v-icon far fa-check-circle"></i> -->
                 <p class="msg">{{msg.text}}</p>
             </div>
@@ -21,7 +21,6 @@ export default {
     `,
     data() {
         return {
-            // msg: null
             msg: {
                 text: null,
                 type: null
@@ -31,14 +30,16 @@ export default {
     created() {
         eventBus.$on('show-msg', msg => {
             console.log('msg');
-            // this.msg = msg
             this.msg = msg
         })
     },
     updated() {
-        // setTimeout(() => {
-        //     this.msg = null
-        //     console.log('done');
-        // }, 3000)
+        setTimeout(() => {
+            this.msg = {
+                text: null,
+                type: null
+            }
+            console.log('done');
+        }, 3000)
     }
 }
