@@ -45,3 +45,10 @@ select {
     padding: 4px;
     cursor: pointer;
 }
+
+.search-input{
+    background-color: rgb(230, 230, 230);
+    border-radius: 5px;
+    outline: 0;
+    padding: 4px;
+}

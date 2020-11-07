@@ -47,6 +47,10 @@ export default {
     },
     methods: {
         deleteNote(note) {
+            eventBus.$emit('show-msg', {
+                text: `"${note.info.title}" was deleted`,
+                type: 'success'
+            })
             keepService.deleteNote(note)
         },
         changeNoteColor(event, note) {

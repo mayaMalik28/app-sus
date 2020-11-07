@@ -10,7 +10,7 @@ export default {
             <input type="text" placeholder="Title" v-model="info.title" />
             <div>
                 <input v-for="(todo, idx) in info.todos" type="text" placeholder="Add Item" v-model="todo.text" />
-                <button type="button" @click="addRow">+</button>
+                <button class="add-todo-btn" type="button" @click="addRow">+</button>
             </div>
             <button class="save-btn" @click.prevent=saveNote>Save!</button>
         </form>
@@ -37,7 +37,7 @@ export default {
             keepService.saveNote(this.info)
                 .then(() => {
                     if(this.info.id) eventBus.$emit('show-msg', {
-                        text: `"${this.info.title}" was saved`,
+                        text: `"${this.info.title}" was edited`,
                         type: 'success'
                      })
                     else eventBus.$emit('show-msg', {

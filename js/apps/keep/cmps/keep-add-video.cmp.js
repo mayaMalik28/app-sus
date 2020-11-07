@@ -31,7 +31,7 @@ export default {
             keepService.saveNote(this.info)
                 .then(() => {
                     if(this.info.id) eventBus.$emit('show-msg', {
-                        text: `"${this.info.title}" was saved`,
+                        text: `"${this.info.title}" was edited`,
                         type: 'success'
                      })
                     else eventBus.$emit('show-msg', {

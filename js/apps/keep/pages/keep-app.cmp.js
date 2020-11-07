@@ -8,11 +8,9 @@ export default {
     name: 'keepApp',
     template: `
     <section class="keep-app">
-        <div>
-            <input type="text" v-model="filterByText" placeholder="Search Note" />
-        </div>
+            <input class="search-input keep-search" type="text" v-model="filterByText" placeholder="Search Note" />
         <keep-edit />
-            <select class="keep-filter" v-model="filterBy">
+            <select class="keep-filter" v-model="filterByType">
                 <option>All</option>
                 <option value="keepTxt">Text</option>
                 <option value="keepTodo">Lists</option>
@@ -27,13 +25,19 @@ export default {
         return {
             notes: null,
             pinnedNotes: null,
+<<<<<<< HEAD
             filterBy: 'All',
             filterByText: ''
+=======
+            filterByType: 'All',
+            filterByText:''
+>>>>>>> 7efd96afa6b89d99890a9fc2f4b63c001f3552ba
         }
     },
     methods: {
 
     },
+<<<<<<< HEAD
     computed: {
         notesToShow() {
             if (this.filterBy === "All") return this.notes;
@@ -61,13 +65,34 @@ export default {
                 console.log(this.pinnedNotes.filter(note => {
                     true
                 }));
-                return this.pinnedNotes.filter(note => {
-                    console.log(txt);
-                    console.log(note.info.title.toLowerCase().includes(txt));
-                    note.info.title.toLowerCase().includes(txt)
+=======
+    computed:{
+        notesToShow(){
+            if (this.filterByType === "All" && this.filterByText === '') return this.notes;
+            const txt = this.filterByText
+            const type = this.filterByType
+            if(type ==='All'){
+                return this.notes.filter(note =>  note.info.title.toLowerCase().includes(txt))
+            }else{
+                return this.notes.filter(note => {
+                    return(note.info.title.toLowerCase().includes(txt) &&
+                            note.type === type)
                 })
             }
-            // return this.pinnedNotes.filter(note => note.type === this.filterBy)
+        },
+        pinnedNotesToShow(){
+            if (this.filterByType === "All" && this.filterByText === '') return this.pinnedNotes;
+            const txt = this.filterByText
+            const type = this.filterByType
+            if(type ==='All'){
+                return this.pinnedNotes.filter(note =>  note.info.title.toLowerCase().includes(txt))
+            }else{
+>>>>>>> 7efd96afa6b89d99890a9fc2f4b63c001f3552ba
+                return this.pinnedNotes.filter(note => {
+                    return(note.info.title.toLowerCase().includes(txt) &&
+                            note.type === type)
+                })
+            }
         }
     },
     components: {
