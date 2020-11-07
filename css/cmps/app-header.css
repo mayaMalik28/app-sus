@@ -1,9 +1,17 @@
 nav.main-nav {
     background-color: rgb(51, 51, 51);
     color: rgb(197, 197, 197);
-    height: 50px;
+    height: 80px;
     padding: 10px 20px;
     width: 100vw;
+    font-size: 1.5rem;
+}
+
+nav.main-nav .fa-earlybirds {
+    color: rgb(197, 197, 197);
+    /* color: rgb(93, 175, 151); */
+    font-size: 2rem;
+    margin-right: 10px;
 }
 
 nav.main-nav ul li {

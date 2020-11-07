@@ -1,5 +1,6 @@
 .details-container {
     position: relative;
+    margin: 40px;
     padding: 40px;
 }
 
@@ -21,4 +22,9 @@
 
 .details-container h3 {
     margin: 0;
+}
+
+.details-container .small-font {
+    color: rgb(109, 108, 108);
+    font-size: 0.9em;
 }
