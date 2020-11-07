@@ -19,3 +19,10 @@ i:hover {
 .keep-filter {
     margin-top: 10px;
 }
+
+.keep-search{
+    margin-top: 20px;
+    width: 300px;
+    height: 40px;
+    font-size: 1.2rem;
+}

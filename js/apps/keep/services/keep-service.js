@@ -315,9 +315,11 @@ function deleteTodo(currNote, todoIdx){
         const idx = gNotes.findIndex(note => note.id === currNote.id);
         gNotes[idx].info.todos.splice(todoIdx, 1)
         keepStorageService.saveNotesToLocalStorage(gNotes)
+        return Promise.resolve()
     } else {
         const idx = gPinnedNotes.findIndex(note => note.id === currNote.id);
         gPinnedNotes[idx].info.todos.splice(todoIdx, 1)
         keepStorageService.savePinnedNotesToLocalStorage(gPinnedNotes)
+        return Promise.resolve()
     }
 }

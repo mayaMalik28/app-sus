@@ -8,11 +8,9 @@ export default {
     name:'keepApp',
     template:`
     <section class="keep-app">
-        <div>
-            <input type="text" v-model="filterByText" placeholder="Search Note" />
-        </div>
+            <input class="search-input keep-search" type="text" v-model="filterByText" placeholder="Search Note" />
         <keep-edit />
-            <select class="keep-filter" v-model="filterBy">
+            <select class="keep-filter" v-model="filterByType">
                 <option>All</option>
                 <option value="keepTxt">Text</option>
                 <option value="keepTodo">Lists</option>
@@ -27,7 +25,7 @@ export default {
         return {
             notes : null,
             pinnedNotes: null,
-            filterBy: 'All',
+            filterByType: 'All',
             filterByText:''
         }
     },
@@ -36,34 +34,30 @@ export default {
     },
     computed:{
         notesToShow(){
-            if (this.filterBy === "All") return this.notes;
-            // const txt = this.filterByText
-            // const type = this.filterBy
-            //     if(type === "All"){
-            //         return this.notes.filter(note => {
-            //             note.info.title.toLowerCase().includes(txt) 
-            //         })
-            //     }else{
-            //         return this.notes.filter(note => {
-            //             (note.info.title.toLowerCase().includes(txt) &&
-            //             note.type === type)
-            //         })
-            //     }
-            
-            return this.notes.filter(note => note.type === this.filterBy)
-        },
-        pinnedNotesToShow(){
-            if (this.filterBy === "All" && this.filterByText === '') return this.pinnedNotes;
+            if (this.filterByType === "All" && this.filterByText === '') return this.notes;
             const txt = this.filterByText
-            const type = this.filterBy
+            const type = this.filterByType
             if(type ==='All'){
-                return this.pinnedNotes.filter(note => {
-                    console.log(txt);
-                    console.log(note.info.title.toLowerCase().includes(txt));
-                    note.info.title.toLowerCase().includes(txt)
+                return this.notes.filter(note =>  note.info.title.toLowerCase().includes(txt))
+            }else{
+                return this.notes.filter(note => {
+                    return(note.info.title.toLowerCase().includes(txt) &&
+                            note.type === type)
                 })
             }
-            // return this.pinnedNotes.filter(note => note.type === this.filterBy)
+        },
+        pinnedNotesToShow(){
+            if (this.filterByType === "All" && this.filterByText === '') return this.pinnedNotes;
+            const txt = this.filterByText
+            const type = this.filterByType
+            if(type ==='All'){
+                return this.pinnedNotes.filter(note =>  note.info.title.toLowerCase().includes(txt))
+            }else{
+                return this.pinnedNotes.filter(note => {
+                    return(note.info.title.toLowerCase().includes(txt) &&
+                            note.type === type)
+                })
+            }
         }
     },
     components: {
