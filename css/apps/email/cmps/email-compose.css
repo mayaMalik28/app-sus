@@ -83,3 +83,16 @@
 .email-compose .compose-btn:hover {
     color: rgb(51, 51, 51);
 }
+
+@media (max-width:955px) {
+    .email-compose {
+        position: absolute;
+        left: 0px;
+        padding: 0px;
+        width: 350px;
+        height: 500px;
+    }
+    .email-compose textarea {
+        width: 300px;
+    }
+}
