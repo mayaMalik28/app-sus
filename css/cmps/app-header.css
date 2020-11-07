@@ -26,19 +26,33 @@ nav.main-nav a:hover {
     font-weight: bold;
 }
 
-.nav-grid{
+.grid-container{
+    position: absolute;
+    top: 31px;
+    right: 32px;
+    box-shadow:  3px 4px 14px 0px #888888;
+    border-radius: 10px;
     width: 300px;
-    height: 300px;
+    height: 331px;
     background: #72af9e;
+}
+
+.close-nav-btn{
+    position: absolute;
+    top: 10px;
+    right: 11px;
+    font-weight: bold;
+    background: transparent;
+}
+
+.nav-grid{
     display: grid;
     grid-template-columns: repeat(3 , 1fr );
     align-items: center;
     justify-content: center;
-    position: absolute;
-    top: -2px;
-    right: 25px;
-    box-shadow:  3px 4px 14px 0px #888888;
-    border-radius: 10px;
+    margin: 0;
+    margin-top: 30px;
+    
 }
 
 .nav-item{
