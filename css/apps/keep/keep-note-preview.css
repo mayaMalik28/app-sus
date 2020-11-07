@@ -12,10 +12,15 @@
 
 
 .note-header{
-    height: 40px;
+    height: 44px;
     font-family: note-header;
     font-size: 1.2rem;
     letter-spacing: 1px;
+    
+}
+
+.note-title {
+    margin: 0;
 }
 
 .note-delete{

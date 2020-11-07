@@ -1,3 +1,7 @@
 .list-header{
     font-size: 1.6rem;
 }
+
+.list-header.logo{
+    margin-top: 10px;
+}

@@ -3,6 +3,8 @@
     column-gap: 20px;
 }
 
+
+
 @media (max-width: 1000px){
     .keep-notes-list {
         column-count: 2;
