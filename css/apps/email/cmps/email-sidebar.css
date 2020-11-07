@@ -9,12 +9,8 @@
     border-left: gray 1px solid; */
 }
 
-.sidebar p {
+.sidebar i {
     /* background-color: green; */
-    margin: 0;
-    padding: 15px;
-    border-bottom: rgb(148, 148, 148) 1px solid;
-    text-align: center;
 }
 
 .sidebar .compose-btn {
@@ -29,8 +25,14 @@
     padding: 10px;
     border-radius: 10px;
     color: rgb(109, 108, 108);
+    background-color: transparent;
     justify-self: center;
     align-self: stretch;
+    margin: 0;
+    padding: 30px 15px;
+    border-bottom: rgb(148, 148, 148) 1px solid;
+    border-radius: 0px;
+    text-align: center;
 }
 
 .sidebar .category-btn i {

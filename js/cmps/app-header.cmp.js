@@ -9,7 +9,7 @@ export default {
                     <router-link to="/book" exact>Books</router-link>
                 </li>
                 <li>
-                    <router-link to="/email" exact>eMail</router-link>
+                    <router-link to="/email/inbox" exact>eMail</router-link>
                 </li>
                 <li>
                     <router-link to="/keep" exact>Keep</router-link>

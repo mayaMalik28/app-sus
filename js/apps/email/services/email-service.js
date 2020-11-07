@@ -316,8 +316,6 @@ function getCurrCategory() {
 }
 
 function getEmailsByCategory() {
-    console.log(currCategory);
-    console.log(emails.filter((email) => email[currCategory]));
     return emails.filter((email) => email[currCategory]);
 
 }

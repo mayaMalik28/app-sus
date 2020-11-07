@@ -9,17 +9,17 @@ export default {
     <li @click="goToDetails" class="email-preview" >
         <div class="flex justify-space-between align-center">
             <i :class="isStar" class="fa-star star" @click.stop="toggleStar"></i>
-                    <p v-if="category === 'isInbox'">{{email.from}}</p>
-                    <p v-if="category === 'isSent'">to: {{email.to}}</p>
-                    <div class="email-preview-content flex center">
-                        <p>{{email.subject}} -</p>
-                        <long-text :text="email.body" :maxLength="30"/>
-                    </div>
-                    <p>{{date}}</p>
-                    <div>
-                        <i @click.stop="toggleRead(email.id)" :class="isRead"></i>
-                        <i @click.stop="removrEmail(email.id)" class="fas fa-trash"></i>
-                    </div>
+            <p v-if="category === 'isSent'">to: {{email.to}}</p>
+            <p v-else>{{email.from}}</p>
+            <!-- <div class="email-preview-content flex"> -->
+                <p>{{email.subject}}</p>
+                <!-- <long-text :text="email.body" :maxLength="30"/> -->
+            <!-- </div> -->
+                <p>{{date}}</p>
+            <div>
+                <i @click.stop="toggleRead(email.id)" :class="isRead"></i>
+                <i @click.stop="removrEmail(email.id)" class="fas fa-trash"></i>
+            </div>
             <!-- <button @click.stop="removrEmail(email.id)">Remove</button> -->
         </div>
         <!-- <email-compose @closeCompose="closeCompose" v-if="isCompose" :email="email"/> -->

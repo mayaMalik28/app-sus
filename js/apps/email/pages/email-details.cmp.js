@@ -14,9 +14,9 @@ export default {
     <email-details-reply v-if="email.repliedId" :id="email.repliedId"/>
     <div class="details-container">
         <h3>{{email.subject}}</h3>
-        <p>{{ new Date(email.createdAt)}}</p>
-        <p v-if="email.isInbox">from: {{email.from}}</p>
-        <p v-if="email.isSent">to: {{email.to}}</p>
+        <p class="small-font">{{date}}</p>
+        <p class="small-font" v-if="email.isInbox">from: {{email.from}}</p>
+        <p class="small-font" v-if="email.isSent">to: {{email.to}}</p>
         <p>{{email.body}}</p>
         <div class="details-btns">
         <i title="Reply" @click="openReply" class="fas fa-reply"></i>
@@ -73,6 +73,11 @@ export default {
         read() {
             if (this.email.isRead) return 'Read'
             else return 'Unread'
+        },
+        date() {
+            var date = new Date(this.email.createdAt).toString();
+            const idx = date.indexOf('G');
+            return date.substr(0, idx);
         }
     },
     created() {

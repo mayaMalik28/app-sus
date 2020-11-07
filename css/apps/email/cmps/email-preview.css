@@ -33,8 +33,12 @@
 .email-preview p {
     margin: 0px;
     padding-left: 5px;
-    width: 100px;
+    width: 200px;
     /* not good for translation!! */
+}
+
+.email-preview .email-preview-content {
+    width: 300px;
 }
 
 .email-preview .long-text {
