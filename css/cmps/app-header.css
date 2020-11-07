@@ -43,6 +43,7 @@ nav.main-nav a:hover {
     right: 11px;
     font-weight: bold;
     background: transparent;
+    font-size: 1.2rem;
 }
 
 .nav-grid{
@@ -62,10 +63,8 @@ nav.main-nav a:hover {
     text-align: center;
 }
 
-
-
 .works{
-    color: black;
+    color: #313131;
 }
 
 .false{

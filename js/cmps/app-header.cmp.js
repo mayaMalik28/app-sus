@@ -6,7 +6,7 @@ export default {
             </div>
             <i @click="toggleNav" class="fas fa-th"></i>
             <div v-if="grid" class="grid-container">
-                <button class="close-nav-btn" @click="toggleNav">X</button>
+                <button class="close-nav-btn" @click="toggleNav"><i class="fas fa-times"></i></button>
                 <ul class="nav-grid">
                 <li @click="toggleNav" class="nav-item works" >
                     <router-link to="/email/inbox" exact>
@@ -21,9 +21,9 @@ export default {
                     </router-link>
                 </li>
                 <li @click="toggleNav" class="nav-item works">
-                    <router-link to="/book" exact>
-                    <i class="nav-icon fas fa-book"></i>
-                         <p class="nav-desc">Books</p>
+                    <router-link to="/about" exact>
+                    <i class="nav-icon fas fa-address-card"></i>
+                         <p class="nav-desc">About us</p>
                     </router-link>
                 </li>
                 <li @click="toggleNav" class="nav-item false">

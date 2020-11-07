@@ -8,7 +8,7 @@ export default {
     props:['notes'],
     template:`
         <section class="keep-pinned-notes-list">
-            <h3 class="list-header">Pinned</h3>
+            <h3 class="logo list-header">Pinned<span> .</span></h3>
             <ul  class="keep-notes-list">
                 <li v-for="currNote in notes">
                     <component :is="currNote.type" :note="currNote"/>
