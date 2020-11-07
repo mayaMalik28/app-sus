@@ -9,7 +9,7 @@
     padding: 0px;
     z-index: 1;
     background-color: rgb(240, 240, 240);
-    width: 480px;
+    /* width: 480px; */
 }
 
 .email-compose .new-email-header {
@@ -59,6 +59,7 @@
     font-size: 1.05em;
     font-family: sans-serif;
     background-color: rgb(240, 240, 240);
+    width: 400;
 }
 
 .email-compose .new-email-header button {
@@ -84,7 +85,7 @@
     color: rgb(51, 51, 51);
 }
 
-@media (max-width:955px) {
+@media(max-width:955px) {
     .email-compose {
         position: absolute;
         left: 0px;

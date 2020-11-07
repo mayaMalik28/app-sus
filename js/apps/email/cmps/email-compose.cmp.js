@@ -52,7 +52,7 @@ export default {
                 .then(result => {
                     console.log(result);
                     eventBus.$emit('show-msg', {
-                        text: result,
+                        text: 'massage sent!',
                         type: 'success'
                     })
                 })

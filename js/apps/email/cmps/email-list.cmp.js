@@ -42,7 +42,7 @@ export default {
                 ((!email.isRead) != this.filterBy.isRead)
             );
             if (this.filterBy.isSortByText) emails.sort((a, b) => (a.text > b.text) ? 1 : -1)
-            else emails.sort((a, b) => (a.createdAt > b.createdAt) ? 1 : (a.createdAt < b.createdAt) ? -1 : 0)
+            else emails.sort((a, b) => (a.createdAt > b.createdAt) ? -1 : (a.createdAt < b.createdAt) ? 1 : 0)
                 // maybe move to service
             return emails
         }
