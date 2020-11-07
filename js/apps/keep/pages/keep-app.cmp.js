@@ -61,7 +61,6 @@ export default {
                     console.log(txt);
                     console.log(note.info.title.toLowerCase().includes(txt));
                     note.info.title.toLowerCase().includes(txt)
-                    
                 })
             }
             // return this.pinnedNotes.filter(note => note.type === this.filterBy)
