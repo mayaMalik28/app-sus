@@ -1,17 +1,12 @@
 @import './cmps/fonts.css';
-
-
 .home-page {
     width: 100vw;
     height: 100%;
     display: flex;
     flex-direction: row-reverse;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-blend-mode: hard-light;
-    background-attachment: fixed;
-    background-color: rgb(49 49 47);
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(66, 66, 66)
 }
 
 .home-btn-container {
@@ -20,6 +15,7 @@
     justify-content: space-around;
     align-items: center;
     width: 50%;
+    height: 60%;
 }
 
 .home-page-btn {
@@ -35,7 +31,8 @@
 }
 
 .home-page-btn:hover {
-    background-color: rgb(47 23 60);
+    /* background-color: rgb(47 23 60); */
+    background-color: rgb(88, 88, 88)
 }
 
 .home-btn-desc {
@@ -49,15 +46,13 @@
 }
 
 .home-img i {
-    font-size: 30rem;
+    font-size: 28rem;
     color: rgb(114, 175, 158);
     text-align: center;
 }
 
 .home-img .logo {
     font-size: 5rem;
-<<<<<<< HEAD
-=======
     color: rgb(201, 198, 186);
     text-align: center;
     margin: 0;
@@ -68,36 +63,29 @@
     color: rgb(93, 175, 151);
 }
 
-@media (max-width: 950px){
-   
-    .home-page{
+@media (max-width: 950px) {
+    .home-page {
         flex-direction: column;
         align-items: center;
         justify-content: center;
     }
-
-    .home-img{
+    .home-img {
         margin-bottom: 20px;
     }
-
     .home-img i {
         font-size: 10rem;
     }
-
-    .home-img h3{
+    .home-img h3 {
         font-size: 3rem;
     }
-
-    .home-page-btn{
+    .home-page-btn {
         margin-bottom: 10px;
         width: 100%;
     }
-    
 }
 
-@media (max-width: 600px){
-    .home-page-btn{
+@media (max-width: 600px) {
+    .home-page-btn {
         width: 320px;
     }
->>>>>>> f9a4e65367b00fc5f145b7169b50b2331237a41f
 }

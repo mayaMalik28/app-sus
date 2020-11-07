@@ -5,6 +5,7 @@
 @import './cmps/email-reply.css';
 @import './cmps/email-sidebar.css';
 @import './cmps/email-details.css';
+@import './cmps/email-status.css';
 .email-app-container {
     /* background-color: grey; */
     height: 100%;

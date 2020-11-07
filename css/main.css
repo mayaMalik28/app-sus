@@ -8,7 +8,7 @@
 @import './about.css';
 html {
     scroll-behavior: smooth;
-    background-color: rgb(49 49 47);
+    background-color: rgb(66, 66, 66)
 }
 
 .app {
