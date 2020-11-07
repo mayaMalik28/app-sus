@@ -71,5 +71,8 @@ export default {
     },
     created() {
         if (!this.email) this.email = emailService.getEmptyEmailToSend();
+        eventBus.$on('noteToMail', (note) => {
+
+        })
     }
 }

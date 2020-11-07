@@ -85,6 +85,12 @@ export default {
         emailService.getEmailById(id)
             .then(email => (this.email = email))
 
+        this.$emit('details-page-in');
+
+    },
+    destroyed() {
+        this.$emit('details-page-out');
+
     },
     components: {
         emailReply,

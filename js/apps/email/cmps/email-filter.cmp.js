@@ -3,9 +3,7 @@ import { eventBus, EVENT_FILTER_EMAIL } from '../../../services/event-bus-servic
 export default {
     name: 'email-filter',
     template: `
-    <section>
-        <button @click="sortByText">Sort By Text</button>
-        <button @click="sortByDate">Sort By Date</button>
+    <section class="email-filter flex center">
         <select 
         value="all"
         v-model="filterBy.isRead"
@@ -13,7 +11,9 @@ export default {
         <option value="all" selected>All</option>
         <option value="read">Read</option>
         <option value="unread">Unread</option>
-            read</select>
+        read</select>
+        <button class="btn-sort" @click="sortByText"><i class="fas fa-sort-alpha-down"></i></button>
+        <button class="btn-sort" @click="sortByDate"><i class="fas fa-sort-amount-down"></i></button>
     </section>
         `,
     data() {

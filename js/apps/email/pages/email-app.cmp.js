@@ -5,14 +5,34 @@ export default {
     template: `
     <section class="email-app-container flex">
         <email-sidebar/>
-        <router-view class="email-main"></router-view>
+        <router-view @details-page-in="changeToLight" @details-page-out="changeToDark"class="email-main" :class="isDarkClass"></router-view>
     </section>
         `,
+    data() {
+        return {
+            isDark: true
+
+        }
+    },
     components: {
         emailSidebar,
     },
+    methods: {
+        changeToLight() {
+            this.isDark = false
+        },
+        changeToDark() {
+            console.log('dark');
+            this.isDark = true
+        }
+    },
+    computed: {
+        isDarkClass() {
+            return { light: !this.isDark }
+        }
+    },
     created() {
-        this.$router.push(`/email/inbox`);
+        // this.$router.push(`/email/inbox`);
     }
 }
 // import emailFilter from '../cmps/email-filter.cmp.js'

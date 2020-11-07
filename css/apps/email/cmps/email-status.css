@@ -1,3 +1,8 @@
 .email-status {
     color: rgb(184, 184, 184);
+    margin: 15px
+}
+
+.email-status p {
+    margin: 0;
 }

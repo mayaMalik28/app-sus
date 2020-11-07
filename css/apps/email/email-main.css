@@ -6,6 +6,7 @@
 @import './cmps/email-sidebar.css';
 @import './cmps/email-details.css';
 @import './cmps/email-status.css';
+@import './cmps/email-filter.css';
 .email-app-container {
     /* background-color: grey; */
     height: 100%;
@@ -14,4 +15,8 @@
 
 .email-main {
     flex: 1
+}
+
+.email-main.light {
+    background-color: rgb(233, 233, 233);
 }
