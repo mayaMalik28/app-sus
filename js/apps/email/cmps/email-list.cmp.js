@@ -11,10 +11,6 @@ import { eventBus, EVENT_FILTER_CATEGORY, EVENT_FILTER_EMAIL } from '../../../se
 export default {
     template: `
     <section v-if="emails" class="email-list">
-    <!-- <div class="email-app flex justify-space-between">
-            <email-status/>
-            <email-filter/>
-        </div> -->
         <ul>
         <email-preview
         v-for= "email in emailsToShow"

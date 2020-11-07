@@ -25,72 +25,37 @@ export default {
         return {
             notes: null,
             pinnedNotes: null,
-<<<<<<< HEAD
-            filterBy: 'All',
-            filterByText: ''
-=======
             filterByType: 'All',
-            filterByText:''
->>>>>>> 7efd96afa6b89d99890a9fc2f4b63c001f3552ba
+            filterByText: ''
         }
     },
     methods: {
 
     },
-<<<<<<< HEAD
     computed: {
         notesToShow() {
-            if (this.filterBy === "All") return this.notes;
-            const txt = this.filterByText
-            const type = this.filterBy
-            if (type === "All") {
-
-                return this.notes.filter(note => {
-                    note.info.title.toLowerCase().includes(txt)
-                })
-            } else {
-                return this.notes.filter(note => {
-                    (note.info.title.toLowerCase().includes(txt) &&
-                        note.type === type)
-                })
-            }
-
-            return this.notes.filter(note => note.type === this.filterBy)
-        },
-        pinnedNotesToShow() {
-            if (this.filterBy === "All" && this.filterByText === '') return this.pinnedNotes;
-            const txt = this.filterByText
-            const type = this.filterBy
-            if (type === 'All') {
-                console.log(this.pinnedNotes.filter(note => {
-                    true
-                }));
-=======
-    computed:{
-        notesToShow(){
             if (this.filterByType === "All" && this.filterByText === '') return this.notes;
             const txt = this.filterByText
             const type = this.filterByType
-            if(type ==='All'){
-                return this.notes.filter(note =>  note.info.title.toLowerCase().includes(txt))
-            }else{
+            if (type === 'All') {
+                return this.notes.filter(note => note.info.title.toLowerCase().includes(txt))
+            } else {
                 return this.notes.filter(note => {
-                    return(note.info.title.toLowerCase().includes(txt) &&
-                            note.type === type)
+                    return (note.info.title.toLowerCase().includes(txt) &&
+                        note.type === type)
                 })
             }
         },
-        pinnedNotesToShow(){
+        pinnedNotesToShow() {
             if (this.filterByType === "All" && this.filterByText === '') return this.pinnedNotes;
             const txt = this.filterByText
             const type = this.filterByType
-            if(type ==='All'){
-                return this.pinnedNotes.filter(note =>  note.info.title.toLowerCase().includes(txt))
-            }else{
->>>>>>> 7efd96afa6b89d99890a9fc2f4b63c001f3552ba
+            if (type === 'All') {
+                return this.pinnedNotes.filter(note => note.info.title.toLowerCase().includes(txt))
+            } else {
                 return this.pinnedNotes.filter(note => {
-                    return(note.info.title.toLowerCase().includes(txt) &&
-                            note.type === type)
+                    return (note.info.title.toLowerCase().includes(txt) &&
+                        note.type === type)
                 })
             }
         }

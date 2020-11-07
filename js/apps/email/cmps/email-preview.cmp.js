@@ -15,10 +15,12 @@ export default {
                 <p>{{email.subject}}</p>
                 <!-- <long-text :text="email.body" :maxLength="30"/> -->
             </div>
-            <div class="side-preview">
+            <div class="side-preview flex wrap">
                 <p>{{date}}</p>
-                <i @click.stop="toggleRead(email.id)" :class="isRead"></i>
-                <i @click.stop="removrEmail(email.id)" class="fas fa-trash"></i>
+                <div>
+                    <i @click.stop="toggleRead(email.id)" :class="isRead"></i>
+                    <i @click.stop="removrEmail(email.id)" class="fas fa-trash"></i>
+                </div>
             </div>
             <!-- <button @click.stop="removrEmail(email.id)">Remove</button> -->
         </div>
