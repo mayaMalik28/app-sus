@@ -26,7 +26,7 @@ export default {
     methods: {
         closeReply() {
             // לעשות שזה ייסגר בלי לצאת לגמרי
-            this.$router.push(`/email`);
+            this.$emit('closeReply')
         },
         sendMail() {
             emailService.sendEmail(this.email)
@@ -40,8 +40,6 @@ export default {
     computed: {},
     created() {
         this.email = emailService.getEmptyEmailToSend();
-        console.log(this.reply);
-        console.log(this.emailToAnswer);
         this.email.to = this.emailToAnswer.from;
         this.email.subject = 'Re: ' + this.emailToAnswer.subject;
         this.email.repliedId = this.emailToAnswer.id;

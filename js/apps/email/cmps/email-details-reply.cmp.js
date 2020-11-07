@@ -12,32 +12,14 @@ export default {
         <p v-if="email.isInbox">from: {{email.from}}</p>
         <p v-if="email.isSent">to: {{email.to}}</p>
         <p>{{email.body}}</p>
+        <hr/>
     </section>
         `,
     data() {
         return {
             email: null,
-            // isReply: false
         }
     },
-    // methods: {
-    //     goToApp() {
-    //         this.$router.push(`/email`);
-
-    //     },
-    //     removeEmail() {
-    //         console.log('remove');
-    //         emailService.removeEmail(this.email.id);
-    //         this.goToApp();
-
-    //     },
-    //     openReply() {
-    //         this.isReply = true;
-    //     },
-    //     // closeReply() {
-    //     //     this.isReply = false
-    //     // }
-    // },
     created() {
         emailService.getEmailById(this.id)
             .then(email => {

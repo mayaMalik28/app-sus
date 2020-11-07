@@ -7,20 +7,18 @@ export default {
     name: 'emailDetails',
     template: `
     <section v-if="email">
-    <!-- <email-details v-if="email.repliedId"></email-details> -->
     <email-details-reply v-if="email.repliedId" :id="email.repliedId"/>
         <h3>{{email.subject}}</h3>
+        <p>{{ new Date(email.createdAt)}}</p>
         <p v-if="email.isInbox">from: {{email.from}}</p>
         <p v-if="email.isSent">to: {{email.to}}</p>
         <p>{{email.body}}</p>
-        <!-- <pre>{{email}}</pre> -->
         <button @click="openReply">Reply</button>
         <button @click="removeEmail">Trash</button>
         <button>Star</button>
-        <button>Later</button>
         <button>Read</button>
         <button @click="goToApp">Go Back</button>
-        <email-reply v-if="isReply" :emailToAnswer="email"/>
+        <email-reply v-if="isReply" :emailToAnswer="email" @closeReply="closeReply"/>
     </section>
         `,
     data() {
@@ -43,9 +41,9 @@ export default {
         openReply() {
             this.isReply = true;
         },
-        // closeReply() {
-        //     this.isReply = false
-        // }
+        closeReply() {
+            this.isReply = false
+        }
     },
     created() {
         const id = this.$route.params.emailId;

@@ -6,7 +6,6 @@ export default {
     template: `
     <section>
         <div class="email-list flex justify-space-between">
-        <!-- <h1>sent</h1> -->
             <email-status/>
             <email-filter/>
         </div>
