@@ -55,10 +55,15 @@
     /* not good for translation!! */
 }
 
-.email-preview .email-preview-content {
+.email-preview .email-preview-content p {
     width: 300px;
 }
 
 .email-preview .long-text {
     font-size: 0.9em;
+}
+
+.email-preview .side-preview p {
+    display: inline-block;
+    width: 100px;
 }

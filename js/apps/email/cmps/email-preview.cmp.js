@@ -11,12 +11,12 @@ export default {
             <i :class="isStar" class="fa-star star" @click.stop="toggleStar"></i>
             <p v-if="category === 'isSent'">to: {{email.to}}</p>
             <p v-else>{{email.from}}</p>
-            <!-- <div class="email-preview-content flex"> -->
+            <div class="email-preview-content flex">
                 <p>{{email.subject}}</p>
                 <!-- <long-text :text="email.body" :maxLength="30"/> -->
-            <!-- </div> -->
+            </div>
+            <div class="side-preview">
                 <p>{{date}}</p>
-            <div>
                 <i @click.stop="toggleRead(email.id)" :class="isRead"></i>
                 <i @click.stop="removrEmail(email.id)" class="fas fa-trash"></i>
             </div>
