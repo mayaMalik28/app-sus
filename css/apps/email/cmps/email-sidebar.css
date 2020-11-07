@@ -10,11 +10,9 @@
     border-left: gray 1px solid; */
 }
 
-.sidebar i {
-    /* background-color: green; */
-}
+.sidebar i {}
 
-.sidebar .compose-btn {
+.sidebar .open-compose-btn {
     font-size: 1.4em;
     padding: 10px;
     border-radius: 10px;
@@ -22,7 +20,7 @@
     color: rgb(179, 179, 179)
 }
 
-.sidebar .compose-btn i {
+.sidebar .open-compose-btn i {
     margin-left: 5px;
 }
 
@@ -43,4 +41,41 @@
 
 .sidebar .category-btn i {
     margin-right: 7px;
+}
+
+.sidebar .category-btn:hover {
+    color: rgb(216, 216, 216);
+}
+
+.sidebar .open-compose-btn:hover {
+    font-weight: bold;
+}
+
+.btn-hamburger {
+    position: fixed;
+    top: 90px;
+    left: 10px;
+    background-color: transparent;
+    font-size: 1.5em;
+    z-index: -1;
+    color: rgb(93, 175, 151);
+}
+
+@media (max-width: 955px) {
+    .sidebar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translateX(-100%);
+        transition: 0.3s;
+    }
+    .btn-hamburger {
+        z-index: 1;
+    }
+    .sidebar.show {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translateX(0);
+    }
 }

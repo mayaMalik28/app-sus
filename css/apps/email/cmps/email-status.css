@@ -6,3 +6,9 @@
 .email-status p {
     margin: 0;
 }
+
+@media (max-width: 955px) {
+    .email-status {
+        margin-left: 50px
+    }
+}

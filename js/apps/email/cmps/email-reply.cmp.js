@@ -8,12 +8,12 @@ export default {
         <label class="flex">
            <p>To: {{email.to}}</p>
         </label>
-        <textarea rows="10" cols="50" v-model="email.body" required>
+        <textarea rows="10" cols="80" v-model="email.body" required>
         </textarea>
-        <div class="compose-buttons">
-            <button type="submit" @click.stop="sendMail">Send</button>
-            <button type="submit" @click.stop="saveAsDraft">Save as draft</button>
-            <button @click.prevent.stop="closeReply">Trash</button>
+        <div class="compose-buttons flex">
+            <button title="Send" class="compose-btn" type="submit" @click.stop="sendMail"><i class="fas fa-share-square"></i></button>
+            <button title="Save as draft" class="compose-btn" type="button" @click.stop="saveAsDraft"><i class="fab fa-firstdraft"></i></button>
+            <button title="Trash" class="compose-btn" type="button" @click.prevent.stop="closeCompose"><i class="fas fa-trash"></i></button>
         </div>
 </form>
     </section>

@@ -8,7 +8,8 @@ export default {
         <form @submit.prevent="closeCompose">
         <div class="new-email-header flex justify-space-between">
             <h3>New Massage</h3>
-            <button @click.prevent.stop="closeCompose">x</button>
+            <button @click.prevent.stop="closeCompose"><i class="fas fa-times"></i>
+</button>
         </div>
         <label class="flex">
            <p>To:</p> <input type="text"  v-model="email.to" required>
@@ -23,12 +24,12 @@ export default {
             <p>Subject</p><input type="text" v-model="email.subject">
         </label>
         <!-- <img src="" alt=""> -->
-        <textarea rows="10" cols="50" v-model="email.body" required>
+        <textarea rows="11" cols="50" v-model="email.body" required>
         </textarea>
-        <div class="compose-buttons">
-            <button type="submit" @click.stop="sendMail">Send</button>
-            <button type="button" @click.stop="saveAsDraft">Save as draft</button>
-            <button type="button" @click.prevent.stop="closeCompose">Trash</button>
+        <div class="compose-buttons flex">
+            <button title="Send" class="compose-btn" type="submit" @click.stop="sendMail"><i class="fas fa-share-square"></i></button>
+            <button title="Save as draft" class="compose-btn" type="button" @click.stop="saveAsDraft"><i class="fab fa-firstdraft"></i></button>
+            <button title="Trash" class="compose-btn" type="button" @click.prevent.stop="closeCompose"><i class="fas fa-trash"></i></button>
             <!-- <button type="button" @click.prevent.stop="AddImg">Add Img</button> -->
         </div>
 

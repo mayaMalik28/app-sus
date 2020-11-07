@@ -1,21 +1,26 @@
 import emailSidebar from '../cmps/email-side-bar.cmp.js'
+import emailHamburger from '../cmps/email-hamburger.cmp.js'
+
 
 
 export default {
     template: `
-    <section class="email-app-container flex">
-        <email-sidebar/>
+    <section class="email-app-container">
+        <email-hamburger @sideBar="showSideBar"/>
+        <email-sidebar :class="show"/>
         <router-view @details-page-in="changeToLight" @details-page-out="changeToDark"class="email-main" :class="isDarkClass"></router-view>
     </section>
         `,
     data() {
         return {
-            isDark: true
+            isDark: true,
+            showSaideBar: false
 
         }
     },
     components: {
         emailSidebar,
+        emailHamburger
     },
     methods: {
         changeToLight() {
@@ -24,55 +29,21 @@ export default {
         changeToDark() {
             console.log('dark');
             this.isDark = true
+        },
+        showSideBar() {
+            this.showSaideBar = !this.showSaideBar
         }
     },
     computed: {
         isDarkClass() {
             return { light: !this.isDark }
+        },
+        show() {
+            return { show: this.showSaideBar }
         }
+
     },
     created() {
         // this.$router.push(`/email/inbox`);
     }
 }
-// import emailFilter from '../cmps/email-filter.cmp.js'
-// import emailList from '../cmps/email-list.cmp.js'
-// import emailStatus from '../cmps/email-status.cmp.js'
-// import emailInbox from './email-inbox.cmp.js'
-// import emailSent from './email-sent.cmp.js'
-// import { emailService } from '../services/email-service.js'
-
-// export default {
-//     template: `
-//     <section class="email-app-container flex">
-//         <!-- <div class="email-app flex justify-space-between">
-//             <email-status/>
-//             <email-filter/>
-//         </div> -->
-//         <!-- <div class="flex"> -->
-//         <!-- <nav>
-//             <router-link to="/email/inbox">Inbox</router-link> | 
-//             <router-link to="/email/sent">Sent</router-link>
-//         </nav>
-//         <router-view></router-view> -->
-
-//         <!-- <email-list/> -->
-//         <!-- </div>         -->
-//         <!-- <nav class="flex"> -->
-//         <email-sidebar/>
-//         <router-view class="email-main"></router-view>
-//         <!-- </nav> -->
-//     </section>
-//         `,
-//     components: {
-//         // emailFilter,
-//         emailSidebar,
-//         // emailList,
-//         // emailStatus,
-//         // emailInbox,
-//         // emailSent
-//     },
-//     created() {
-//         this.$router.push(`/email/inbox`);
-//     }
-// }
