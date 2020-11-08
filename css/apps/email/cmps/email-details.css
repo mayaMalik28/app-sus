@@ -34,4 +34,7 @@
     .details-container {
         padding-top: 65px;
     }
+    .details-container .details-btns {
+        z-index: 1;
+    }
 }
